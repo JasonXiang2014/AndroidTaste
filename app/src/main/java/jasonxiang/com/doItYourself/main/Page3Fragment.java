@@ -13,7 +13,7 @@ public class Page3Fragment extends BaseFragment {
 
     @Override
     protected int getContentViewId() {
-        return R.layout.layout_item_3;
+        return R.layout.fragment_page_3;
     }
 
     @Override

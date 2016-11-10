@@ -6,36 +6,40 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.OnClick;
 import jasonxiang.com.doItYourself.R;
+import jasonxiang.com.doItYourself.base.BaseActivity;
 import jasonxiang.com.doItYourself.base.BaseFragment;
 import jasonxiang.com.doItYourself.view.IndicatorView;
 
-public class MainActivity extends AppCompatActivity {
-
-    private ViewPager mViewPager;
-    private IndicatorView indicatorview;
-    private View vLine;
+public class MainActivity extends BaseActivity {
 
     private int indicatorWidth = 0;
 
     private MyFragmentPagerAdapter mFragmentPagerAdapter;
     private ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        mViewPager = (ViewPager) findViewById(R.id.viewpager);
-        vLine = findViewById(R.id.line);
-        indicatorview = (IndicatorView) findViewById(R.id.indicatorview);
+    @BindView(R.id.viewpager)
+    ViewPager mViewPager;
+    @BindView(R.id.line)
+    View vLine;
+    @BindView(R.id.indicatorview)
+    IndicatorView indicatorview;
 
+    @Override
+    protected int getContentViewId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void init(Bundle savedInstanceState) {
         int screenWidth = getWindow().getWindowManager().getDefaultDisplay().getWidth();
 
         LayoutParams lp = vLine.getLayoutParams();
@@ -58,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
         indicatorview.setOnPageChangeListener(pageChangeListener);
     }
 
-    public void doSwicth(View view) {
+    @OnClick({R.id.fade_anim_left, R.id.fade_anim_middle, R.id.fade_anim_right})
+    void doSwitch(View view) {
         switch (view.getId()) {
             case R.id.fade_anim_left:
                 mViewPager.setCurrentItem(0, true);
