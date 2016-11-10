@@ -15,8 +15,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main.RecycleActivity"></activity>
-        <activity android:name=".main.StaggeredGridLayoutActivity"></activity>
+        <activity
+            android:name=".main.RecyclerActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".main.StaggeredGridLayoutActivity" />
     </application>
 
 </manifest>

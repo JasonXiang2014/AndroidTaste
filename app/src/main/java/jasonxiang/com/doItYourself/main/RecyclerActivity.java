@@ -21,7 +21,7 @@ import jasonxiang.com.doItYourself.recycler.DividerGridItemDecoration;
 import jasonxiang.com.doItYourself.recycler.HomeAdapter;
 import jasonxiang.com.doItYourself.recycler.StaggeredHomeAdapter;
 
-public class RecycleActivity extends AppCompatActivity {
+public class RecyclerActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private List<String> mDatas;
@@ -54,13 +54,13 @@ public class RecycleActivity extends AppCompatActivity {
         mAdapter.setOnItemClickLitener(new HomeAdapter.OnItemClickLitener() {
             @Override
             public void onItemClick(View view, int position) {
-                Toast.makeText(RecycleActivity.this, position + " click",
+                Toast.makeText(RecyclerActivity.this, position + " click",
                         Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onItemLongClick(View view, int position) {
-                Toast.makeText(RecycleActivity.this, position + " long click",
+                Toast.makeText(RecyclerActivity.this, position + " long click",
                         Toast.LENGTH_SHORT).show();
             }
         });

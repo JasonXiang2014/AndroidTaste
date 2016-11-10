@@ -1,25 +1,24 @@
 package jasonxiang.com.doItYourself.main;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jasonxiang.com.doItYourself.R;
 import jasonxiang.com.doItYourself.view.IndicatorView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
     private IndicatorView indicatorview;
@@ -50,7 +49,7 @@ public class MainActivity extends Activity {
         recycleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, RecycleActivity.class);
+                Intent intent = new Intent(MainActivity.this, RecyclerActivity.class);
                 startActivity(intent);
             }
         });
