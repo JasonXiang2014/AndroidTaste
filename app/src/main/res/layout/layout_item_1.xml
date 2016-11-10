@@ -8,29 +8,28 @@
 
     <ImageView
         android:id="@+id/photo"
-
         android:layout_width="80dip"
         android:layout_height="82dip"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dip"
         android:adjustViewBounds="true"
-        android:padding="2dip"
         android:background="@drawable/test_image"
-        android:src="@drawable/ic_launcher"/>
+        android:padding="2dip"
+        android:src="@drawable/ic_launcher" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:padding="4.5dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="4.5dp">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:scaleType="centerCrop"
             android:background="@drawable/shape_bg_white_card"
+            android:scaleType="centerCrop"
             android:src="#00ff00" />
 
         <Button
@@ -39,11 +38,11 @@
             android:layout_height="wrap_content"
             android:text="RecycleView" />
 
-        <TextView
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="testtesttesttesttesttesttesttestt
-            esttesttesttesttesttesttesttesttesttesttesttest" />
+            android:text="FAB" />
 
     </LinearLayout>
 

@@ -1,21 +1,20 @@
 package jasonxiang.com.doItYourself.main;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import jasonxiang.com.doItYourself.R;
+import jasonxiang.com.doItYourself.base.BaseFragment;
 import jasonxiang.com.doItYourself.view.IndicatorView;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
 
     private int indicatorWidth = 0;
 
+    private MyFragmentPagerAdapter mFragmentPagerAdapter;
+    private ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,44 +37,25 @@ public class MainActivity extends AppCompatActivity {
         indicatorview = (IndicatorView) findViewById(R.id.indicatorview);
 
         int screenWidth = getWindow().getWindowManager().getDefaultDisplay().getWidth();
-        int screenHeight = getWindow().getWindowManager().getDefaultDisplay().getHeight();
-
 
         LayoutParams lp = vLine.getLayoutParams();
         indicatorWidth = lp.width = screenWidth / 3;
         lp.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, getResources().getDisplayMetrics());
         vLine.setLayoutParams(lp);
 
-        List<View> viewList = new ArrayList<>();
-        View view1 = getLayoutInflater().inflate(R.layout.layout_item_1, null, false);
-        Button recycleButton = (Button) view1.findViewById(R.id.recycleButton);
-        recycleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, RecyclerActivity.class);
-                startActivity(intent);
-            }
-        });
-        View view2 = getLayoutInflater().inflate(R.layout.layout_item_2, null, false);
-        View view3 = getLayoutInflater().inflate(R.layout.layout_item_3, null, false);
+        BaseFragment page1Fragment = new Page1Fragment();
+        BaseFragment page2Fragment = new Page2Fragment();
+        BaseFragment page3Fragment = new Page3Fragment();
+        fragmentArrayList.add(page1Fragment);
+        fragmentArrayList.add(page2Fragment);
+        fragmentArrayList.add(page3Fragment);
+        mFragmentPagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), fragmentArrayList);
+        mViewPager.setAdapter(mFragmentPagerAdapter);
+        mViewPager.setOffscreenPageLimit(2);
 
-        viewList.add(view1);
-        viewList.add(view2);
-        viewList.add(view3);
-
-        MyPagerAdapter mPagerAdapter = new MyPagerAdapter(viewList);
-        mViewPager.setAdapter(mPagerAdapter);
         indicatorview.setViewPager(mViewPager);
         PageChangeListener pageChangeListener = new PageChangeListener();
         indicatorview.setOnPageChangeListener(pageChangeListener);
-
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-
-            }
-        });
-
     }
 
     public void doSwicth(View view) {
@@ -112,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
                 isAnim = false;
                 vLine.setTranslationX(indicatorWidth * pos);
             }
-
         }
 
         @Override
@@ -130,35 +112,24 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    class MyPagerAdapter extends PagerAdapter {
+    class MyFragmentPagerAdapter extends FragmentPagerAdapter {
 
-        List<View> mViewList;
+        private ArrayList<Fragment> fragmentArrayList;
 
-        private MyPagerAdapter(List<View> viewList) {
-            mViewList = viewList;
+        public MyFragmentPagerAdapter(FragmentManager fm, ArrayList<Fragment> fragmentArrayList) {
+            super(fm);
+            this.fragmentArrayList = fragmentArrayList;
         }
 
         @Override
         public int getCount() {
-            return mViewList == null || mViewList.size() <= 0 ? 0 : mViewList.size();
+            return fragmentArrayList != null ? fragmentArrayList.size() : 0;
         }
 
         @Override
-        public boolean isViewFromObject(View arg0, Object arg1) {
-            return arg0 == arg1;
+        public Fragment getItem(int position) {
+            return fragmentArrayList.get(position);
         }
-
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            container.addView(mViewList.get(position));
-            return mViewList.get(position);
-        }
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            container.removeView(mViewList.get(position));
-        }
-
     }
 
 }
