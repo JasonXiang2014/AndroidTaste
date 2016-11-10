@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -13,6 +14,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
 
 import jasonxiang.com.doItYourself.R;
 import jasonxiang.com.doItYourself.view.IndicatorView;
@@ -44,6 +46,14 @@ public class MainActivity extends Activity {
 
         List<View> viewList = new ArrayList<>();
         View view1 = getLayoutInflater().inflate(R.layout.layout_item_1, null, false);
+        Button recycleButton = (Button) view1.findViewById(R.id.recycleButton);
+        recycleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, RecycleActivity.class);
+                startActivity(intent);
+            }
+        });
         View view2 = getLayoutInflater().inflate(R.layout.layout_item_2, null, false);
         View view3 = getLayoutInflater().inflate(R.layout.layout_item_3, null, false);
 
@@ -56,6 +66,13 @@ public class MainActivity extends Activity {
         indicatorview.setViewPager(mViewPager);
         PageChangeListener pageChangeListener = new PageChangeListener();
         indicatorview.setOnPageChangeListener(pageChangeListener);
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
 
     }
 
@@ -145,13 +162,4 @@ public class MainActivity extends Activity {
 
     }
 
-    public static int dip2px(Context context, float dpValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (dpValue * scale + 0.5f);
-    }
-
-    public static int px2dip(Context context, float pxValue) {
-        final float scale = context.getResources().getDisplayMetrics().density;
-        return (int) (pxValue / scale + 0.5f);
-    }
 }

@@ -446,4 +446,7 @@
     <color name="white75alpha">#bfefefef</color>
     <color name="white_fafaf8">#fffafaf8</color>
     <color name="whitewith10tran">#1affffff</color>
+
+    <color name="color_item_press">#ffff0000</color>
+    <color name="color_item_normal">#44ff0000</color>
 </resources>
