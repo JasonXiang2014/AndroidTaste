@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".main.MainActivity">
+        <activity android:name=".xj.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -16,13 +16,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".main.ui.recycler.RecyclerActivity"
+            android:name=".xj.ui.recycler.RecyclerActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".main.ui.recycler.StaggeredGridLayoutActivity" />
-        <activity android:name=".main.ui.fab.FloatingActionButtonAct" />
-        <activity android:name=".main.ui.tablayout.TabLayoutAct" />
+        <activity android:name=".xj.ui.recycler.StaggeredGridLayoutActivity" />
+        <activity android:name=".xj.ui.fab.FloatingActionButtonAct" />
+        <activity android:name=".xj.ui.tablayout.TabLayoutAct" />
         <activity
-            android:name=".main.ui.navigationdrawer.NavigationDrawerAct"
+            android:name=".xj.ui.navigationdrawer.NavigationDrawerAct"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

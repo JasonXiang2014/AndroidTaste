@@ -4,4 +4,7 @@
 
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
+
+    <string name="pull_to_refresh_more">加载中...</string>
+    <string name="pull_to_refresh_no_more">别拉了,到底了...</string>
 </resources>
