@@ -5,11 +5,14 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import jasonxiang.com.doItYourself.R;
@@ -51,9 +54,19 @@ public class NavigationDrawerAct extends BaseActivity {
         drawerToggle = setupDrawerToggle();
 
         setFirstFragmentContent();
+
+        Menu menu = nvDrawer.getMenu();
+        MenuItem menuItem = menu.findItem(R.id.nav_switch);
+        View actionView = MenuItemCompat.getActionView(menuItem);
+        actionView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(NavigationDrawerAct.this, "Click Switch", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
-    private void setFirstFragmentContent(){
+    private void setFirstFragmentContent() {
         Fragment fragment = PageFragment.newInstance(0);
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
