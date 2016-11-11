@@ -1,12 +1,17 @@
 package jasonxiang.com.doItYourself.main.ui.tablayout;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ImageSpan;
 
 import butterknife.BindView;
 import jasonxiang.com.doItYourself.R;
@@ -45,6 +50,12 @@ public class TabLayoutAct extends BaseActivity {
                 "Tab7", "Tab8", "Tab9"};
         private Context context;
 
+        private int[] imageResId = {
+                R.drawable.ic_1,
+                R.drawable.ic_2,
+                R.drawable.ic_3
+        };
+
         public SampleFragmentPagerAdapter(FragmentManager fm, Context context) {
             super(fm);
             this.context = context;
@@ -63,7 +74,19 @@ public class TabLayoutAct extends BaseActivity {
         @Override
         public CharSequence getPageTitle(int position) {
             // Generate title based on item position
-            return tabTitles[position];
+//            return tabTitles[position];
+
+            // getDrawable(int i) is deprecated, use getDrawable(int i, Theme theme) for min SDK >=21
+            // or ContextCompat.getDrawable(Context context, int id) if you want support for older versions.
+            // Drawable image = context.getResources().getDrawable(iconIds[position], context.getTheme());
+            // Drawable image = context.getResources().getDrawable(imageResId[position]);
+
+            Drawable image = ContextCompat.getDrawable(context, imageResId[position % 3]);
+            image.setBounds(0, 0, image.getIntrinsicWidth(), image.getIntrinsicHeight());
+            SpannableString sb = new SpannableString(" " + tabTitles[position]);
+            ImageSpan imageSpan = new ImageSpan(image, ImageSpan.ALIGN_BASELINE);
+            sb.setSpan(imageSpan, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            return sb;
         }
     }
 
