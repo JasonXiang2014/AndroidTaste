@@ -19,7 +19,8 @@
             android:name=".main.ui.recycler.RecyclerActivity"
             android:theme="@style/AppTheme" />
         <activity android:name=".main.ui.recycler.StaggeredGridLayoutActivity" />
-        <activity android:name=".main.ui.fab.FloatingActionButtonAct"/>
+        <activity android:name=".main.ui.fab.FloatingActionButtonAct" />
+        <activity android:name=".main.ui.tablayout.TabLayoutAct" />
     </application>
 
 </manifest>

@@ -22,5 +22,11 @@
             android:layout_height="wrap_content"
             android:text="FAB" />
 
+        <Button
+            android:id="@+id/tabLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="tabLayout" />
+
     </LinearLayout>
 </ScrollView>

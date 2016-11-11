@@ -9,6 +9,7 @@ import jasonxiang.com.doItYourself.R;
 import jasonxiang.com.doItYourself.base.BaseFragment;
 import jasonxiang.com.doItYourself.main.ui.fab.FloatingActionButtonAct;
 import jasonxiang.com.doItYourself.main.ui.recycler.RecyclerActivity;
+import jasonxiang.com.doItYourself.main.ui.tablayout.TabLayoutAct;
 
 /**
  * Created by xiangjain on 2016/11/10.
@@ -26,7 +27,7 @@ public class Page1Fragment extends BaseFragment {
 
     }
 
-    @OnClick({R.id.recyclerButton, R.id.fab})
+    @OnClick({R.id.recyclerButton, R.id.fab, R.id.tabLayout})
     void onClick(View view) {
         Intent intent = null;
         switch (view.getId()) {
@@ -35,6 +36,9 @@ public class Page1Fragment extends BaseFragment {
                 break;
             case R.id.fab:
                 intent = new Intent(getActivity(), FloatingActionButtonAct.class);
+                break;
+            case R.id.tabLayout:
+                intent = new Intent(getActivity(), TabLayoutAct.class);
                 break;
             default:
                 break;
