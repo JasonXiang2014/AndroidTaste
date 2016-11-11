@@ -8,6 +8,7 @@ import butterknife.OnClick;
 import jasonxiang.com.doItYourself.R;
 import jasonxiang.com.doItYourself.base.BaseFragment;
 import jasonxiang.com.doItYourself.main.ui.fab.FloatingActionButtonAct;
+import jasonxiang.com.doItYourself.main.ui.navigationdrawer.NavigationDrawerAct;
 import jasonxiang.com.doItYourself.main.ui.recycler.RecyclerActivity;
 import jasonxiang.com.doItYourself.main.ui.tablayout.TabLayoutAct;
 
@@ -27,7 +28,7 @@ public class Page1Fragment extends BaseFragment {
 
     }
 
-    @OnClick({R.id.recyclerButton, R.id.fab, R.id.tabLayout})
+    @OnClick({R.id.recyclerButton, R.id.fab, R.id.tabLayout, R.id.navigation_drawer})
     void onClick(View view) {
         Intent intent = null;
         switch (view.getId()) {
@@ -39,6 +40,9 @@ public class Page1Fragment extends BaseFragment {
                 break;
             case R.id.tabLayout:
                 intent = new Intent(getActivity(), TabLayoutAct.class);
+                break;
+            case R.id.navigation_drawer:
+                intent = new Intent(getActivity(), NavigationDrawerAct.class);
                 break;
             default:
                 break;

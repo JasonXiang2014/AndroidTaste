@@ -21,6 +21,9 @@
         <activity android:name=".main.ui.recycler.StaggeredGridLayoutActivity" />
         <activity android:name=".main.ui.fab.FloatingActionButtonAct" />
         <activity android:name=".main.ui.tablayout.TabLayoutAct" />
+        <activity
+            android:name=".main.ui.navigationdrawer.NavigationDrawerAct"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
