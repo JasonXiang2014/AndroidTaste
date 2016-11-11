@@ -3,6 +3,7 @@ package jasonxiang.com.doItYourself.main.ui.tablayout;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -33,6 +34,8 @@ public class TabLayoutAct extends BaseActivity {
     @BindView(R.id.sliding_tabs)
     TabLayout tabLayout;
 
+    public static String POSITION = "POSITION";
+
     @Override
     protected int getContentViewId() {
         return R.layout.activity_tablayout;
@@ -54,6 +57,18 @@ public class TabLayoutAct extends BaseActivity {
             TabLayout.Tab tab = tabLayout.getTabAt(i);
             tab.setCustomView(pagerAdapter.getTabView(i));
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(POSITION, tabLayout.getSelectedTabPosition());
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        viewPager.setCurrentItem(savedInstanceState.getInt(POSITION));
     }
 
     public class SampleFragmentPagerAdapter extends FragmentPagerAdapter {
