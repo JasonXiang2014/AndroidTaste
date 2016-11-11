@@ -1,11 +1,8 @@
-package jasonxiang.com.doItYourself.main;
+package jasonxiang.com.doItYourself.main.ui.recycler;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.Menu;
@@ -17,15 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jasonxiang.com.doItYourself.R;
-import jasonxiang.com.doItYourself.recycler.DividerGridItemDecoration;
-import jasonxiang.com.doItYourself.recycler.HomeAdapter;
 import jasonxiang.com.doItYourself.recycler.StaggeredHomeAdapter;
 
-public class RecyclerActivity extends AppCompatActivity {
+public class StaggeredGridLayoutActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private List<String> mDatas;
-    private HomeAdapter mAdapter;
     private StaggeredHomeAdapter mStaggeredHomeAdapter;
 
     @Override
@@ -36,13 +30,11 @@ public class RecyclerActivity extends AppCompatActivity {
         initData();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.id_recyclerview);
-        mAdapter = new HomeAdapter(this, mDatas);
+        mStaggeredHomeAdapter = new StaggeredHomeAdapter(this, mDatas);
 
-        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(4,
+        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3,
                 StaggeredGridLayoutManager.VERTICAL));
-        mRecyclerView.setAdapter(mAdapter);
-
-        mRecyclerView.addItemDecoration(new DividerGridItemDecoration(this));
+        mRecyclerView.setAdapter(mStaggeredHomeAdapter);
         // 设置item动画
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
@@ -51,23 +43,23 @@ public class RecyclerActivity extends AppCompatActivity {
     }
 
     private void initEvent() {
-        mAdapter.setOnItemClickLitener(new HomeAdapter.OnItemClickLitener() {
+        mStaggeredHomeAdapter.setOnItemClickLitener(new StaggeredHomeAdapter.OnItemClickLitener() {
             @Override
             public void onItemClick(View view, int position) {
-                Toast.makeText(RecyclerActivity.this, position + " click",
-                        Toast.LENGTH_SHORT).show();
+                Toast.makeText(StaggeredGridLayoutActivity.this,
+                        position + " click", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onItemLongClick(View view, int position) {
-                Toast.makeText(RecyclerActivity.this, position + " long click",
-                        Toast.LENGTH_SHORT).show();
+                Toast.makeText(StaggeredGridLayoutActivity.this,
+                        position + " long click", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     protected void initData() {
-        mDatas = new ArrayList<>();
+        mDatas = new ArrayList<String>();
         for (int i = 'A'; i < 'z'; i++) {
             mDatas.add("" + (char) i);
         }
@@ -75,7 +67,7 @@ public class RecyclerActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.main_staggered, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -83,25 +75,10 @@ public class RecyclerActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.id_action_add:
-                mAdapter.addData(1);
+                mStaggeredHomeAdapter.addData(1);
                 break;
             case R.id.id_action_delete:
-                mAdapter.removeData(1);
-                break;
-            case R.id.id_action_gridview:
-                mRecyclerView.setLayoutManager(new GridLayoutManager(this, 4));
-                break;
-            case R.id.id_action_listview:
-                mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-                break;
-            case R.id.id_action_horizontalGridView:
-                mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(4,
-                        StaggeredGridLayoutManager.HORIZONTAL));
-                break;
-
-            case R.id.id_action_staggeredgridview:
-                Intent intent = new Intent(this , StaggeredGridLayoutActivity.class);
-                startActivity(intent);
+                mStaggeredHomeAdapter.removeData(1);
                 break;
         }
         return true;

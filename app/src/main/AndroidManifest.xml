@@ -16,9 +16,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".main.RecyclerActivity"
+            android:name=".main.ui.recycler.RecyclerActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".main.StaggeredGridLayoutActivity" />
+        <activity android:name=".main.ui.recycler.StaggeredGridLayoutActivity" />
+        <activity android:name=".main.ui.fab.FloatingActionButtonAct"/>
     </application>
 
 </manifest>

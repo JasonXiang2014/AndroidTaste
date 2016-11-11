@@ -31,7 +31,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         this.mOnItemClickLitener = mOnItemClickLitener;
     }
 
-
     public HomeAdapter(Context context, List<String> datas) {
         mInflater = LayoutInflater.from(context);
         mDatas = datas;
@@ -93,8 +92,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         public MyViewHolder(View view) {
             super(view);
             tv = (TextView) view.findViewById(R.id.id_num);
-
-
         }
     }
 }

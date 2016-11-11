@@ -7,6 +7,8 @@ import android.view.View;
 import butterknife.OnClick;
 import jasonxiang.com.doItYourself.R;
 import jasonxiang.com.doItYourself.base.BaseFragment;
+import jasonxiang.com.doItYourself.main.ui.fab.FloatingActionButtonAct;
+import jasonxiang.com.doItYourself.main.ui.recycler.RecyclerActivity;
 
 /**
  * Created by xiangjain on 2016/11/10.
@@ -26,14 +28,18 @@ public class Page1Fragment extends BaseFragment {
 
     @OnClick({R.id.recyclerButton, R.id.fab})
     void onClick(View view) {
+        Intent intent = null;
         switch (view.getId()) {
             case R.id.recyclerButton:
-                Intent intent = new Intent(getActivity(), RecyclerActivity.class);
-                startActivity(intent);
+                intent = new Intent(getActivity(), RecyclerActivity.class);
                 break;
             case R.id.fab:
+                intent = new Intent(getActivity(), FloatingActionButtonAct.class);
+                break;
+            default:
                 break;
         }
+        startActivity(intent);
     }
 
 }
