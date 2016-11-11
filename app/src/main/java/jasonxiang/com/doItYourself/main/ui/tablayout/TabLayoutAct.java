@@ -12,6 +12,10 @@ import android.support.v4.view.ViewPager;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ImageSpan;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import butterknife.BindView;
 import jasonxiang.com.doItYourself.R;
@@ -38,10 +42,18 @@ public class TabLayoutAct extends BaseActivity {
     protected void init(Bundle savedInstanceState) {
 
         // Get the ViewPager and set it's PagerAdapter so that it can display items
-        viewPager.setAdapter(new SampleFragmentPagerAdapter(getSupportFragmentManager(), TabLayoutAct.this));
+        SampleFragmentPagerAdapter pagerAdapter =
+                new SampleFragmentPagerAdapter(getSupportFragmentManager(), TabLayoutAct.this);
+        viewPager.setAdapter(pagerAdapter);
 
         // Give the TabLayout the ViewPager
         tabLayout.setupWithViewPager(viewPager);
+
+        // Iterate over all tabs and set the custom view
+        for (int i = 0; i < tabLayout.getTabCount(); i++) {
+            TabLayout.Tab tab = tabLayout.getTabAt(i);
+            tab.setCustomView(pagerAdapter.getTabView(i));
+        }
     }
 
     public class SampleFragmentPagerAdapter extends FragmentPagerAdapter {
@@ -88,6 +100,17 @@ public class TabLayoutAct extends BaseActivity {
             sb.setSpan(imageSpan, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             return sb;
         }
+
+        public View getTabView(int position) {
+            // Given you have a custom layout in `res/layout/custom_tab.xml` with a TextView and ImageView
+            View v = LayoutInflater.from(context).inflate(R.layout.custom_tab, null);
+            TextView tv = (TextView) v.findViewById(R.id.tvTitle);
+            tv.setText(tabTitles[position]);
+            ImageView img = (ImageView) v.findViewById(R.id.imgIcon);
+            img.setImageResource(imageResId[position % 3]);
+            return v;
+        }
+
     }
 
 }
