@@ -18,6 +18,6 @@
         android:src="@drawable/ic_check_white"
         app:layout_anchor="@id/mRecyclerView"
         app:layout_anchorGravity="bottom|right|end"
-        app:layout_behavior="jasonxiang.com.doItYourself.main.ui.fab.ScrollAwareFABBehavior" />
+        app:layout_behavior="jasonxiang.com.doItYourself.xj.ui.fab.ScrollAwareFABBehavior" />
 
 </android.support.design.widget.CoordinatorLayout>

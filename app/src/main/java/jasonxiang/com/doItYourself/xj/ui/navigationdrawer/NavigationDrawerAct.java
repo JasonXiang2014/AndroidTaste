@@ -49,6 +49,15 @@ public class NavigationDrawerAct extends BaseActivity {
         View headerLayout = nvDrawer.getHeaderView(0);
 
         drawerToggle = setupDrawerToggle();
+
+        setFirstFragmentContent();
+    }
+
+    private void setFirstFragmentContent(){
+        Fragment fragment = PageFragment.newInstance(0);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+        setTitle("First Fragment");
     }
 
     private ActionBarDrawerToggle setupDrawerToggle() {

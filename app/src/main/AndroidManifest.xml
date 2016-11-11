@@ -20,7 +20,9 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".xj.ui.recycler.StaggeredGridLayoutActivity" />
         <activity android:name=".xj.ui.fab.FloatingActionButtonAct" />
-        <activity android:name=".xj.ui.tablayout.TabLayoutAct" />
+        <activity
+            android:name=".xj.ui.tablayout.TabLayoutAct"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".xj.ui.navigationdrawer.NavigationDrawerAct"
             android:theme="@style/AppTheme.NoActionBar" />
