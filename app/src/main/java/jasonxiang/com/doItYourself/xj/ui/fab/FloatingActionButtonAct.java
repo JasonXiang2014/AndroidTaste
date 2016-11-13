@@ -26,6 +26,8 @@ import jasonxiang.com.doItYourself.R;
 import jasonxiang.com.doItYourself.xj.Model.Contact;
 import jasonxiang.com.doItYourself.xj.base.BaseActivity;
 import jasonxiang.com.doItYourself.xj.recycler.DividerItemDecoration;
+import jp.wasabeef.recyclerview.animators.ScaleInRightAnimator;
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 /**
  * Created by xiangjian on 2016/11/11.
@@ -69,13 +71,14 @@ public class FloatingActionButtonAct extends BaseActivity {
 
         // First param is number of columns and second param is orientation i.e Vertical or Horizontal
         StaggeredGridLayoutManager gridLayoutManager =
-                new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
+                new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         // Attach the layout manager to the recycler view
         rvContacts.setLayoutManager(gridLayoutManager);
 
         RecyclerView.ItemDecoration itemDecoration = new
                 DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST);
         rvContacts.addItemDecoration(itemDecoration);
+        rvContacts.setItemAnimator(new ScaleInRightAnimator());
     }
 
     @OnClick(R.id.fab)

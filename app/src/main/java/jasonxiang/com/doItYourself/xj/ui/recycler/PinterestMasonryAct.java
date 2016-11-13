@@ -1,7 +1,6 @@
 package jasonxiang.com.doItYourself.xj.ui.recycler;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
@@ -11,6 +10,7 @@ import android.view.MenuItem;
 import butterknife.BindView;
 import jasonxiang.com.doItYourself.R;
 import jasonxiang.com.doItYourself.xj.base.BaseActivity;
+import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator;
 
 /**
  * Created by xiangjian on 2016/11/12.
@@ -41,6 +41,8 @@ public class PinterestMasonryAct extends BaseActivity {
         mRecyclerView.setAdapter(adapter);
         SpacesItemDecoration decoration = new SpacesItemDecoration(16);
         mRecyclerView.addItemDecoration(decoration);
+        //TODO no effects
+        mRecyclerView.setItemAnimator(new SlideInLeftAnimator());
     }
 
     @Override
