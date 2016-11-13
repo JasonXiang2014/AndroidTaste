@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:background="#202020">
+
+    <ImageView
+        android:id="@+id/imgBack"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/p"
+        android:contentDescription="@null"
+        android:scaleType="center"
+        android:src="@drawable/selector_button_back" />
+
+    <TextView
+        android:id="@+id/tvLeftAction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/p"
+        android:textColor="#edc277"
+        android:textSize="14sp"
+        android:text="tvLeftAction"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxEms="10"
+            android:maxLines="1"
+            android:text="TooBar Title"
+            android:textColor="#ffffff"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/tvSubTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text=""
+            android:textColor="#cccccc"
+            android:textSize="12sp"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvRightAction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:paddingRight="@dimen/p"
+        android:text="tvRightAction"
+        android:textColor="#cccccc"
+        android:textSize="14sp"
+        android:visibility="visible" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.0dp"
+        android:layout_alignParentBottom="true" />
+</RelativeLayout>

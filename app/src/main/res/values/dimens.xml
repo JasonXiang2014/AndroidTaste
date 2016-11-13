@@ -3,4 +3,6 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="tab_max_width">180dp</dimen>
+    <!-- 页边距 -->
+    <dimen name="p">20dp</dimen>
 </resources>

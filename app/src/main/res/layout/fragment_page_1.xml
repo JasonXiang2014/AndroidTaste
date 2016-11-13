@@ -40,5 +40,11 @@
             android:layout_height="wrap_content"
             android:text="Masonry" />
 
+        <Button
+            android:id="@+id/toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Use the Toolbar" />
+
     </LinearLayout>
 </ScrollView>
