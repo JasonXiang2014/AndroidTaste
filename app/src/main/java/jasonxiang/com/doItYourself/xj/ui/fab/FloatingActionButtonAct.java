@@ -79,6 +79,7 @@ public class FloatingActionButtonAct extends BaseActivity {
                 DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST);
         rvContacts.addItemDecoration(itemDecoration);
         rvContacts.setItemAnimator(new ScaleInRightAnimator());
+        //TODO https://github.com/codepath/android_guides/wiki/Heterogenous-Layouts-inside-RecyclerView
     }
 
     @OnClick(R.id.fab)
