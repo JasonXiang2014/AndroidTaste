@@ -1,49 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main_container"
+    android:id="@+id/swipeContainer"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <LinearLayout
-        android:id="@+id/container"
+    android:layout_height="match_parent"
+    >
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/addBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="add contacts" />
-        <Button
-            android:id="@+id/scrollTopBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="scrollToTopPostion" />
-        <Button
-            android:id="@+id/scrollBottomBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="scrollToBottomPostion" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvContacts"
+        <LinearLayout
+            android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp" />
-    </LinearLayout>
+            android:orientation="vertical">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_check_white"
-        app:layout_anchor="@id/container"
-        app:layout_anchorGravity="bottom|right|end"
-        app:layout_behavior="jasonxiang.com.doItYourself.xj.ui.fab.ScrollAwareFABBehavior" />
+            <Button
+                android:id="@+id/addBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="add contacts" />
+            <Button
+                android:id="@+id/scrollTopBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="scrollToTopPostion" />
+            <Button
+                android:id="@+id/scrollBottomBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="scrollToBottomPostion" />
 
-</android.support.design.widget.CoordinatorLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvContacts"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp" />
+        </LinearLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_check_white"
+            app:layout_anchor="@id/container"
+            app:layout_anchorGravity="bottom|right|end"
+            app:layout_behavior="jasonxiang.com.doItYourself.xj.ui.fab.ScrollAwareFABBehavior" />
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</android.support.v4.widget.SwipeRefreshLayout>
+

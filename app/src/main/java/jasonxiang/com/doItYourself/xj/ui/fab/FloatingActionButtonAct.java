@@ -2,10 +2,11 @@ package jasonxiang.com.doItYourself.xj.ui.fab;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
@@ -39,8 +40,8 @@ public class FloatingActionButtonAct extends BaseActivity {
     RecyclerView rvContacts;
     @BindView(R.id.fab)
     FloatingActionButton fab;
-    @BindView(R.id.main_container)
-    CoordinatorLayout parentView;
+    @BindView(R.id.swipeContainer)
+    SwipeRefreshLayout swipeContainer;
     @BindView(R.id.addBtn)
     Button addBtn;
     @BindView(R.id.scrollTopBtn)
@@ -78,16 +79,38 @@ public class FloatingActionButtonAct extends BaseActivity {
         rvContacts.addItemDecoration(itemDecoration);
         rvContacts.setItemAnimator(new ScaleInRightAnimator());
         //TODO https://github.com/codepath/android_guides/wiki/Heterogenous-Layouts-inside-RecyclerView
+
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mAdapter.clear();
+                        mAdapter.addAll(Contact.createContactsList(5));
+                        swipeContainer.setRefreshing(false);
+                    }
+                }, 3000);
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
     }
 
     @OnClick(R.id.fab)
     public void snackBar() {
         MyOnClickListener myOnClickListener = new MyOnClickListener();
-        Snackbar.make(parentView, R.string.snackbar_text, Snackbar.LENGTH_LONG)
+        Snackbar.make(swipeContainer, R.string.snackbar_text, Snackbar.LENGTH_LONG)
                 .setAction(R.string.snackbar_action, myOnClickListener)
                 .setActionTextColor(ContextCompat.getColor(FloatingActionButtonAct.this, R.color.blue))
                 .show(); // Don’t forget to show!
-//        Snackbar.make(parentView, R.string.snackbar_text, Snackbar.LENGTH_INDEFINITE).show();
+//        Snackbar.make(swipeContainer, R.string.snackbar_text, Snackbar.LENGTH_INDEFINITE).show();
     }
 
     @OnClick(R.id.addBtn)
@@ -199,6 +222,16 @@ public class FloatingActionButtonAct extends BaseActivity {
 //            diffResult.dispatchUpdatesTo(this); // calls adapter's notify methods after diff is computed
 //        }
 
+        // Clean all elements of the recycler
+        public void clear() {
+            mContacts.clear();
+        }
+
+        // Add a list of items
+        public void addAll(List<Contact> list) {
+            mContacts.addAll(list);
+            notifyDataSetChanged();
+        }
     }
 
 }
