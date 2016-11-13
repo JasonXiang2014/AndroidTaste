@@ -6,7 +6,6 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
@@ -27,7 +26,6 @@ import jasonxiang.com.doItYourself.xj.Model.Contact;
 import jasonxiang.com.doItYourself.xj.base.BaseActivity;
 import jasonxiang.com.doItYourself.xj.recycler.DividerItemDecoration;
 import jp.wasabeef.recyclerview.animators.ScaleInRightAnimator;
-import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 /**
  * Created by xiangjian on 2016/11/11.
@@ -141,7 +139,7 @@ public class FloatingActionButtonAct extends BaseActivity {
 
         // Provide a direct reference to each of the views within a data item
         // Used to cache the views within the item layout for fast access
-        public class ViewHolder extends RecyclerView.ViewHolder {
+        public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
             @BindView(R.id.contact_name)
             TextView nameTextView;
             @BindView(R.id.message_button)
@@ -156,6 +154,17 @@ public class FloatingActionButtonAct extends BaseActivity {
 //                nameTextView = (TextView) itemView.findViewById(R.id.contact_name);
 //                messageButton = (Button) itemView.findViewById(R.id.message_button);
                 ButterKnife.bind(this, itemView);
+                itemView.setOnClickListener(this);
+            }
+
+            @Override
+            public void onClick(View view) {
+                int position = getAdapterPosition(); // gets item position
+                if (position != RecyclerView.NO_POSITION) { // Check if an item was deleted, but the user clicked it before the UI removed it
+                    Contact contact = mContacts.get(position);
+                    // We can access the data within the views
+                    Toast.makeText(mContext, contact.getName(), Toast.LENGTH_SHORT).show();
+                }
             }
         }
 
