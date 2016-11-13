@@ -9,6 +9,7 @@ import jasonxiang.com.doItYourself.R;
 import jasonxiang.com.doItYourself.xj.base.BaseFragment;
 import jasonxiang.com.doItYourself.xj.ui.fab.FloatingActionButtonAct;
 import jasonxiang.com.doItYourself.xj.ui.navigationdrawer.NavigationDrawerAct;
+import jasonxiang.com.doItYourself.xj.ui.recycler.PinterestMasonryAct;
 import jasonxiang.com.doItYourself.xj.ui.recycler.RecyclerActivity;
 import jasonxiang.com.doItYourself.xj.ui.tablayout.TabLayoutAct;
 
@@ -28,7 +29,8 @@ public class Page1Fragment extends BaseFragment {
 
     }
 
-    @OnClick({R.id.recyclerButton, R.id.fab, R.id.tabLayout, R.id.navigation_drawer})
+    @OnClick({R.id.recyclerButton, R.id.fab, R.id.tabLayout, R.id.navigation_drawer,
+    R.id.Masonry})
     void onClick(View view) {
         Intent intent = null;
         switch (view.getId()) {
@@ -44,6 +46,8 @@ public class Page1Fragment extends BaseFragment {
             case R.id.navigation_drawer:
                 intent = new Intent(getActivity(), NavigationDrawerAct.class);
                 break;
+            case R.id.Masonry:
+                intent = new Intent(getActivity(), PinterestMasonryAct.class);
             default:
                 break;
         }

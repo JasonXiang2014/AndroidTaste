@@ -98,7 +98,6 @@ public class RecyclerActivity extends AppCompatActivity {
                 mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(4,
                         StaggeredGridLayoutManager.HORIZONTAL));
                 break;
-
             case R.id.id_action_staggeredgridview:
                 Intent intent = new Intent(this , StaggeredGridLayoutActivity.class);
                 startActivity(intent);

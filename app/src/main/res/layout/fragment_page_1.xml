@@ -33,5 +33,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="navigation_drawer" />
+
+        <Button
+            android:id="@+id/Masonry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Masonry" />
+
     </LinearLayout>
 </ScrollView>
