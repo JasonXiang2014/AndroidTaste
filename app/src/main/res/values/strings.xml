@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DrawYourself</string>
+    <string name="app_name">AwesomeUI</string>
     <string name="crash">非常抱歉，发生软件运行错误，我们会尽快解决该问题，请关注版本更新。</string>
 
     <string name="drawer_open">Open navigation drawer</string>
