@@ -451,9 +451,9 @@
     <color name="color_item_normal">#44ff0000</color>
 
 
-    <color name="primary">#00BCD4</color>
-    <color name="primary_dark">#0097A7</color>
-    <color name="accent">#FFC400</color>
+    <color name="primary">#673AB7</color>
+    <color name="primary_dark">#512DA8</color>
+    <color name="accent">#FF4081</color>
     <color name="bg">#E0E0E0</color>
 
 </resources>
