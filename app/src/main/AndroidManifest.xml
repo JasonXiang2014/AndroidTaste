@@ -24,6 +24,7 @@
         <activity android:name=".xj.ui.navigationdrawer.NavigationDrawerAct" />
         <activity android:name=".xj.ui.recycler.PinterestMasonryAct" />
         <activity android:name=".xj.ui.toolbar.ToolbarAct" />
+        <activity android:name=".xj.ui.navigationdrawer.CheeseDetailActivity"/>
     </application>
 
 </manifest>

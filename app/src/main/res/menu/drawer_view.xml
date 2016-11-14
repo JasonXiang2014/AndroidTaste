@@ -5,15 +5,15 @@
         <item
             android:id="@+id/nav_first_fragment"
             android:checked="true"
-            android:icon="@mipmap/ic_one"
+            android:icon="@drawable/ic_dashboard"
             android:title="First Fragment" />
         <item
             android:id="@+id/nav_second_fragment"
-            android:icon="@mipmap/ic_two"
+            android:icon="@drawable/ic_event"
             android:title="Second Fragment" />
         <item
             android:id="@+id/nav_third_fragment"
-            android:icon="@mipmap/ic_three"
+            android:icon="@drawable/ic_forum"
             android:title="Third Fragment" />
         <item
             android:id="@+id/nav_switch"
@@ -23,10 +23,10 @@
             <menu>
                 <group android:checkableBehavior="single">
                     <item
-                        android:icon="@mipmap/ic_one"
+                        android:icon="@drawable/ic_dashboard"
                         android:title="Sub item 1" />
                     <item
-                        android:icon="@mipmap/ic_two"
+                        android:icon="@drawable/ic_event"
                         android:title="Sub item 2" />
                 </group>
             </menu>

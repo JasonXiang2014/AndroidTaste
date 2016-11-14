@@ -17,6 +17,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import jasonxiang.com.doItYourself.R;
 import jasonxiang.com.doItYourself.xj.base.BaseActivity;
+import jasonxiang.com.doItYourself.xj.main.Page4ContainerFragment;
 import jasonxiang.com.doItYourself.xj.ui.tablayout.PageFragment;
 
 /**
@@ -30,7 +31,7 @@ public class NavigationDrawerAct extends BaseActivity {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.nvView)
-    NavigationView nvDrawer;
+    NavigationView navigationView;
 
     private ActionBarDrawerToggle drawerToggle;
 
@@ -44,18 +45,18 @@ public class NavigationDrawerAct extends BaseActivity {
         // Set a Toolbar to replace the ActionBar.
         setSupportActionBar(toolbar);
         // Setup drawer view
-        setupDrawerContent(nvDrawer);
+        setupDrawerContent(navigationView);
 
         // There is usually only 1 header view.
         // Multiple header views can technically be added at runtime.
         // We can use navigationView.getHeaderCount() to determine the total number.
-        View headerLayout = nvDrawer.getHeaderView(0);
+        View headerLayout = navigationView.getHeaderView(0);
 
         drawerToggle = setupDrawerToggle();
 
         setFirstFragmentContent();
 
-        Menu menu = nvDrawer.getMenu();
+        Menu menu = navigationView.getMenu();
         MenuItem menuItem = menu.findItem(R.id.nav_switch);
         View actionView = MenuItemCompat.getActionView(menuItem);
         actionView.setOnClickListener(new View.OnClickListener() {
@@ -67,7 +68,7 @@ public class NavigationDrawerAct extends BaseActivity {
     }
 
     private void setFirstFragmentContent() {
-        Fragment fragment = PageFragment.newInstance(0);
+        Fragment fragment = new Page4ContainerFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
         setTitle("First Fragment");
@@ -121,7 +122,7 @@ public class NavigationDrawerAct extends BaseActivity {
         Fragment fragment = null;
         switch (menuItem.getItemId()) {
             case R.id.nav_first_fragment:
-                fragment = PageFragment.newInstance(0);
+                fragment = new Page4ContainerFragment();
                 break;
             case R.id.nav_second_fragment:
                 fragment = PageFragment.newInstance(1);
