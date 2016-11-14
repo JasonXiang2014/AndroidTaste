@@ -6,6 +6,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import butterknife.BindView;
 import jasonxiang.com.doItYourself.R;
@@ -43,7 +44,23 @@ public class PinterestMasonryAct extends BaseActivity {
         mRecyclerView.addItemDecoration(decoration);
         //TODO no effects
         mRecyclerView.setItemAnimator(new SlideInLeftAnimator());
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //response to back arrow approach-1
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
+    //response to back arrow approach-2
+//    @Override
+//    public boolean onSupportNavigateUp() {
+//        finish();
+//        return super.onSupportNavigateUp();
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -63,6 +80,11 @@ public class PinterestMasonryAct extends BaseActivity {
         if (id == R.id.action_settings) {
             return true;
         }
+        //response to back arrow approach-3
+//        if (item.getItemId() == android.R.id.home) {
+//            onBackPressed();
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }

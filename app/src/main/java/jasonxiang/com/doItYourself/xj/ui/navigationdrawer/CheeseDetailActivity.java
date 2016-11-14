@@ -64,4 +64,11 @@ public class CheeseDetailActivity extends BaseActivity {
 //        getMenuInflater().inflate(R.menu.sample_actions, menu);
         return true;
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return super.onSupportNavigateUp();
+    }
+
 }
