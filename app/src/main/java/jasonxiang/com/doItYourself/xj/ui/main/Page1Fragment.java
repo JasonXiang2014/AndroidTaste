@@ -7,6 +7,7 @@ import android.view.View;
 import butterknife.OnClick;
 import jasonxiang.com.doItYourself.R;
 import jasonxiang.com.doItYourself.xj.base.BaseFragment;
+import jasonxiang.com.doItYourself.xj.common.widget.WebViewActivity;
 import jasonxiang.com.doItYourself.xj.ui.fab.FloatingActionButtonAct;
 import jasonxiang.com.doItYourself.xj.ui.navigationdrawer.NavigationDrawerAct;
 import jasonxiang.com.doItYourself.xj.ui.recycler.PinterestMasonryAct;
@@ -31,7 +32,7 @@ public class Page1Fragment extends BaseFragment {
     }
 
     @OnClick({R.id.recyclerButton, R.id.fab, R.id.tabLayout, R.id.navigation_drawer,
-    R.id.Masonry, R.id.toolbar})
+            R.id.Masonry, R.id.toolbar, R.id.webview})
     void onClick(View view) {
         Intent intent = null;
         switch (view.getId()) {
@@ -53,10 +54,15 @@ public class Page1Fragment extends BaseFragment {
             case R.id.toolbar:
                 intent = new Intent(getActivity(), ToolbarAct.class);
                 break;
+            case R.id.webview:
+                WebViewActivity.openLink(getActivity(), "http://www.baidu.com", "WebView Title");
+                break;
             default:
                 break;
         }
-        startActivity(intent);
+        if (intent != null) {
+            startActivity(intent);
+        }
     }
 
 }

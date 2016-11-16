@@ -9,6 +9,7 @@ import android.widget.Toast;
 import butterknife.BindString;
 import butterknife.ButterKnife;
 import jasonxiang.com.doItYourself.R;
+import jasonxiang.com.doItYourself.xj.common.utils.Log;
 
 /**
  * Created by xiangjian on 2016/11/10.
@@ -33,6 +34,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             init(savedInstanceState);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), crashMessage, Toast.LENGTH_LONG).show();
+            Log.logStackTrace(e);
         }
     }
 

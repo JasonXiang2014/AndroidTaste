@@ -456,4 +456,8 @@
     <color name="accent">#FF4081</color>
     <color name="bg">#E0E0E0</color>
 
+    <color name="bg_dr_green">#00BC8D</color>
+    <color name="bg_dr_green_selected">#18a186</color>
+    <color name="bg_light_gray">#aaa</color>
+
 </resources>

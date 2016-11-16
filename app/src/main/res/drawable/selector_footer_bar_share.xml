@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false">
+        <bitmap android:src="@drawable/icon_footer_bar_share_disable" />
+    </item>
+    <item android:state_pressed="true">
+        <layer-list>
+            <item>
+                <shape>
+                    <gradient android:type="radial"
+                            android:centerX=".5"
+                            android:centerY=".5"
+                            android:startColor="@color/bg_dr_green"
+                            android:endColor="#0000"
+                            android:gradientRadius=".5" />
+                </shape>
+            </item>
+            <item>
+                <bitmap android:src="@drawable/icon_footer_bar_share_normal" />
+            </item>
+        </layer-list>
+    </item>
+    <item>
+        <bitmap android:src="@drawable/icon_footer_bar_share_normal" />
+    </item>
+</selector>
