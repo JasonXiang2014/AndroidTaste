@@ -1,4 +1,4 @@
-package jasonxiang.com.doItYourself.xj.utils;
+package jasonxiang.com.doItYourself.xj.common.utils;
 
 import android.app.Activity;
 import android.content.Context;

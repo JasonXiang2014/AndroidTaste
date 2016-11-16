@@ -1,4 +1,4 @@
-package jasonxiang.com.doItYourself.xj.recycler;
+package jasonxiang.com.doItYourself.xj.common.recycler;
 
 import android.content.Context;
 import android.content.res.TypedArray;

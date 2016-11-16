@@ -6,15 +6,15 @@
     android:gravity="center_horizontal"
     android:orientation="vertical" >
 
-    <jasonxiang.com.doItYourself.xj.view.MyView
+    <jasonxiang.com.doItYourself.xj.common.widget.MyView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:background="#ffff0000"
         android:padding="20dp" >
-    </jasonxiang.com.doItYourself.xj.view.MyView>
+    </jasonxiang.com.doItYourself.xj.common.widget.MyView>
 
-    <jasonxiang.com.doItYourself.xj.view.LabelImageView
+    <jasonxiang.com.doItYourself.xj.common.widget.LabelImageView
         android:layout_width="160dp"
         android:layout_height="160dp"
         myapp:label_src="@drawable/ic_launcher"

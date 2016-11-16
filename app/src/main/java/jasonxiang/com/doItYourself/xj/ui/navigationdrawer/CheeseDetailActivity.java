@@ -26,7 +26,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 
 import jasonxiang.com.doItYourself.R;
-import jasonxiang.com.doItYourself.xj.Model.Cheeses;
+import jasonxiang.com.doItYourself.xj.model.Cheeses;
 import jasonxiang.com.doItYourself.xj.base.BaseActivity;
 
 public class CheeseDetailActivity extends BaseActivity {

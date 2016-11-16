@@ -11,7 +11,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import jasonxiang.com.doItYourself.R;
-import jasonxiang.com.doItYourself.xj.utils.UIUtils;
+import jasonxiang.com.doItYourself.xj.common.utils.UIUtils;
 
 /**
  * Created by guomenglong on 16/8/4.

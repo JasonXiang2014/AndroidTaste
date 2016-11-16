@@ -1,4 +1,4 @@
-package jasonxiang.com.doItYourself.xj.view;
+package jasonxiang.com.doItYourself.xj.common.widget;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

@@ -23,9 +23,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import jasonxiang.com.doItYourself.R;
-import jasonxiang.com.doItYourself.xj.Model.Contact;
 import jasonxiang.com.doItYourself.xj.base.BaseActivity;
-import jasonxiang.com.doItYourself.xj.recycler.DividerItemDecoration;
+import jasonxiang.com.doItYourself.xj.common.recycler.DividerItemDecoration;
+import jasonxiang.com.doItYourself.xj.model.Contact;
 import jp.wasabeef.recyclerview.animators.ScaleInRightAnimator;
 
 /**

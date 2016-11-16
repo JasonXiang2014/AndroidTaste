@@ -1,4 +1,4 @@
-package jasonxiang.com.doItYourself.xj.main;
+package jasonxiang.com.doItYourself.xj.ui.main;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;

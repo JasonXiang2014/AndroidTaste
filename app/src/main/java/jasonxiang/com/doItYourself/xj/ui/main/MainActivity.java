@@ -1,4 +1,4 @@
-package jasonxiang.com.doItYourself.xj.main;
+package jasonxiang.com.doItYourself.xj.ui.main;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,7 +17,7 @@ import butterknife.OnClick;
 import jasonxiang.com.doItYourself.R;
 import jasonxiang.com.doItYourself.xj.base.BaseActivity;
 import jasonxiang.com.doItYourself.xj.base.BaseFragment;
-import jasonxiang.com.doItYourself.xj.view.IndicatorView;
+import jasonxiang.com.doItYourself.xj.common.widget.IndicatorView;
 
 public class MainActivity extends BaseActivity {
 

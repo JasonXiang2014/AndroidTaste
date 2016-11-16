@@ -17,7 +17,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import jasonxiang.com.doItYourself.R;
 import jasonxiang.com.doItYourself.xj.base.BaseActivity;
-import jasonxiang.com.doItYourself.xj.main.Page4ContainerFragment;
+import jasonxiang.com.doItYourself.xj.ui.main.Page4ContainerFragment;
 import jasonxiang.com.doItYourself.xj.ui.tablayout.PageFragment;
 
 /**

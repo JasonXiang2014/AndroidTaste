@@ -1,4 +1,4 @@
-package jasonxiang.com.doItYourself.xj.main;
+package jasonxiang.com.doItYourself.xj.ui.main;
 
 import android.os.Bundle;
 
@@ -9,11 +9,11 @@ import jasonxiang.com.doItYourself.xj.base.BaseFragment;
  * Created by xiangjain on 2016/11/10.
  */
 
-public class Page3Fragment extends BaseFragment {
+public class Page2Fragment extends BaseFragment {
 
     @Override
     protected int getContentViewId() {
-        return R.layout.fragment_page_3;
+        return R.layout.fragment_page_2;
     }
 
     @Override

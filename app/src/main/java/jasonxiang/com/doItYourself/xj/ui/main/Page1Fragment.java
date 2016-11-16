@@ -1,4 +1,4 @@
-package jasonxiang.com.doItYourself.xj.main;
+package jasonxiang.com.doItYourself.xj.ui.main;
 
 import android.content.Intent;
 import android.os.Bundle;

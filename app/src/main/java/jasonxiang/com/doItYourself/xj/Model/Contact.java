@@ -1,4 +1,4 @@
-package jasonxiang.com.doItYourself.xj.Model;
+package jasonxiang.com.doItYourself.xj.model;
 
 import java.util.ArrayList;
 

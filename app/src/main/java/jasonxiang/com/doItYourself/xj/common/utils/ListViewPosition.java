@@ -1,4 +1,4 @@
-package jasonxiang.com.doItYourself.xj.utils;
+package jasonxiang.com.doItYourself.xj.common.utils;
 
 /**
  * 描述ListView滑动位置的一个类

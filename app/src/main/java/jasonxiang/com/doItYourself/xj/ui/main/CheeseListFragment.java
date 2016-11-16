@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package jasonxiang.com.doItYourself.xj.main;
+package jasonxiang.com.doItYourself.xj.ui.main;
 
 import android.content.Context;
 import android.content.Intent;
@@ -35,8 +35,8 @@ import java.util.List;
 import java.util.Random;
 
 import jasonxiang.com.doItYourself.R;
-import jasonxiang.com.doItYourself.xj.Model.Cheeses;
 import jasonxiang.com.doItYourself.xj.base.BaseFragment;
+import jasonxiang.com.doItYourself.xj.model.Cheeses;
 import jasonxiang.com.doItYourself.xj.ui.navigationdrawer.CheeseDetailActivity;
 
 public class CheeseListFragment extends BaseFragment {

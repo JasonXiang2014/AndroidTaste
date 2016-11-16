@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jasonxiang.com.doItYourself.R;
-import jasonxiang.com.doItYourself.xj.recycler.StaggeredHomeAdapter;
+import jasonxiang.com.doItYourself.xj.common.recycler.StaggeredHomeAdapter;
 
 public class StaggeredGridLayoutActivity extends AppCompatActivity {
 

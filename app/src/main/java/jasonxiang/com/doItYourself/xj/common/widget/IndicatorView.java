@@ -1,4 +1,4 @@
-package jasonxiang.com.doItYourself.xj.view;
+package jasonxiang.com.doItYourself.xj.common.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;

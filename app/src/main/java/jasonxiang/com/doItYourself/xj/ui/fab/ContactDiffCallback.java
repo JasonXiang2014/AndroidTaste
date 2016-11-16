@@ -4,7 +4,8 @@ import android.support.v7.util.DiffUtil;
 
 import java.util.List;
 
-import jasonxiang.com.doItYourself.xj.Model.Contact;
+import jasonxiang.com.doItYourself.xj.model.Contact;
+
 
 /**
  * Created by xiangjian on 2016/11/12.
