@@ -7,9 +7,12 @@ import android.graphics.Bitmap;
 import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.GestureDetector;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -29,6 +32,7 @@ import jasonxiang.com.doItYourself.R;
 import jasonxiang.com.doItYourself.xj.base.BaseActivity;
 import jasonxiang.com.doItYourself.xj.common.utils.ContextUtils;
 import jasonxiang.com.doItYourself.xj.common.utils.Log;
+import jasonxiang.com.doItYourself.xj.common.widget.webview.JavaCallJsAct;
 
 /*
  * Define a web view template activity
@@ -115,6 +119,15 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
     protected void init(Bundle savedInstanceState) {
 
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
         title = getIntent().getStringExtra(EXTRA_TITLE_STRING);
         description = getIntent().getStringExtra(EXTRA_DESCRIPTION);
         link = getIntent().getStringExtra(EXTRA_LINK);
@@ -414,4 +427,38 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
         }
     }
 
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            webview.saveState(savedInstanceState);
+        } else {
+            loadPage();
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        webview.saveState(outState);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_script, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (item.getItemId()) {
+            case R.id.script:
+                startActivity(new Intent(WebViewActivity.this, JavaCallJsAct.class));
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
