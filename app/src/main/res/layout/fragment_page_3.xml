@@ -4,15 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <jasonxiang.com.doItYourself.xj.common.widget.MyView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:background="#ffff0000"
-        android:padding="20dp" >
-    </jasonxiang.com.doItYourself.xj.common.widget.MyView>
+        android:padding="20dp"></jasonxiang.com.doItYourself.xj.common.widget.MyView>
 
     <jasonxiang.com.doItYourself.xj.common.widget.LabelImageView
         android:layout_width="160dp"
@@ -20,5 +19,18 @@
         myapp:label_src="@drawable/ic_launcher"
         myapp:label_text="Hello,World"
         myapp:label_textsize="12sp" />
+
+    <jasonxiang.com.doItYourself.xj.common.widget.ScrollerView
+        android:id="@+id/scrollerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btnScroll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="can you scroll?" />
+    </jasonxiang.com.doItYourself.xj.common.widget.ScrollerView>
+
 
 </LinearLayout>
