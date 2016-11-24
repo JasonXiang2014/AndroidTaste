@@ -34,8 +34,8 @@ public class MainActivity extends BaseActivity {
     View vLine;
     @BindView(R.id.indicatorview)
     IndicatorView indicatorview;
-    @BindView(R.id.ptrContainer)
-    PullToRefreshBase ptrFrame;
+//    @BindView(R.id.ptrContainer)
+//    PullToRefreshBase ptrFrame;
 
     @Override
     protected int getContentViewId() {
@@ -65,7 +65,7 @@ public class MainActivity extends BaseActivity {
         PageChangeListener pageChangeListener = new PageChangeListener();
         indicatorview.setOnPageChangeListener(pageChangeListener);
 
-        ptrFrame.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener() {
+        /*ptrFrame.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener() {
             @Override
             public void onRefresh(PullToRefreshBase refreshView) {
                 new Handler().postDelayed(new Runnable() {
@@ -83,7 +83,7 @@ public class MainActivity extends BaseActivity {
             public void run() {
                 ptrFrame.autoRefresh(true);
             }
-        }, 150);
+        }, 150);*/
     }
 
     @OnClick({R.id.fade_anim_left, R.id.fade_anim_middle, R.id.fade_anim_right})

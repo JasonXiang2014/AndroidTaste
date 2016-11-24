@@ -17,7 +17,7 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrHandler;
 
 /**
- * Created by Administrator on 2015/11/9.
+ * Created by xiangjian on 2015/11/9.
  */
 public class PullToRefreshListView extends PullToRefreshBase implements AbsListView.OnScrollListener {
 
@@ -38,6 +38,9 @@ public class PullToRefreshListView extends PullToRefreshBase implements AbsListV
     private boolean mIsShowLoadMoreLoading;
     private boolean mManualShowLoadMoreLoading;
 
+    private boolean allowLoadMore;
+    private int totalAmount;
+
     public PullToRefreshListView(Context context) {
         this(context, null);
     }
@@ -52,6 +55,7 @@ public class PullToRefreshListView extends PullToRefreshBase implements AbsListV
         mContent = new FrameLayout(getContext());
         this.addViewForPtrFrameLayout(mContent);
         mListView = new ListView(getContext(), attrs);
+        mListView.setFooterDividersEnabled(false);
         mListView.setId(android.R.id.list);
         mContent.addView(mListView);
         mListView.setOnScrollListener(this);
@@ -67,9 +71,7 @@ public class PullToRefreshListView extends PullToRefreshBase implements AbsListV
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
                 if (mListener != null) {
-                    if (mMoreView != null) {
-                       mMoreView.initLoadMoreView();
-                    }
+                    resetLoadMore();
                     mListener.onRefresh(PullToRefreshListView.this);
                 }
             }
@@ -79,12 +81,22 @@ public class PullToRefreshListView extends PullToRefreshBase implements AbsListV
 
     private void initLoadMore() {
         mMoreView = new PullToRefreshLoadMoreView(getContext());
-        mMoreView.setVisibility(View.GONE);
+        mMoreView.initLoadMoreView();
     }
 
-    @Override
-    protected void onFinishInflate() {
-        super.onFinishInflate();
+    private void resetLoadMore() {
+        mMoreView.initLoadMoreView();
+    }
+
+    public void setTotalAmount(int amount) {
+        this.totalAmount = amount;
+    }
+
+    private boolean isAllowLoadMore() {
+        if (mListView.getAdapter() != null) {
+            return mListView.getAdapter().getCount() < totalAmount;
+        }
+        return false;
     }
 
     @Override
@@ -159,13 +171,13 @@ public class PullToRefreshListView extends PullToRefreshBase implements AbsListV
 
     @Override
     public void onScrollStateChanged(AbsListView view, int state) {
-        if (state == AbsListView.OnScrollListener.SCROLL_STATE_IDLE && null != mOnLoadMoreListener) {
+        if (isAllowLoadMore() && state == AbsListView.OnScrollListener.SCROLL_STATE_IDLE && null != mOnLoadMoreListener) {
             int lastPosition = getRefreshableView().getLastVisiblePosition();
             int total = getRefreshableView().getCount() - 1;
-            if (total > 0 && total - lastPosition <= mLoadMoreRemainCount && getHeader().getTop() == -getHeader().getHeight()){
+            if (total > 0 && total - lastPosition <= mLoadMoreRemainCount && getHeader().getTop() == -getHeader().getHeight()) {
                 mOnLoadMoreListener.onLoadMore();
                 if (mIsShowLoadMoreLoading) {
-                    mMoreView.setVisibility( showMoreViewOnAutoMode() ? VISIBLE : GONE);
+                    mMoreView.setVisibility(showMoreViewOnAutoMode() ? VISIBLE : GONE);
                 }
             }
         }
@@ -180,6 +192,7 @@ public class PullToRefreshListView extends PullToRefreshBase implements AbsListV
             return;
         }
         if (isNoMoreData && (showMoreViewOnAutoMode() || showMoreViewOnManualMode())) {
+
             mMoreView.loadMoreComplete();
         }
     }
@@ -196,21 +209,21 @@ public class PullToRefreshListView extends PullToRefreshBase implements AbsListV
         return mOnScrollListener;
     }
 
-    public void showLoadMoreLoading () {
+    public void showLoadMoreLoading() {
         if (mListView.getAdapter() != null) {
             return;
         }
         mIsShowLoadMoreLoading = true;
     }
 
-    public void enableManualShowLoadMoreLoading () {
+    public void enableManualShowLoadMoreLoading() {
         if (mListView.getAdapter() != null) {
             return;
         }
         mManualShowLoadMoreLoading = true;
     }
 
-    public void manualShowLoadMoreLoading (boolean show) {
+    public void manualShowLoadMoreLoading(boolean show) {
         if (mManualShowLoadMoreLoading) {
             mMoreView.setVisibility(show ? View.VISIBLE : View.GONE);
         }
@@ -228,7 +241,7 @@ public class PullToRefreshListView extends PullToRefreshBase implements AbsListV
             return true;
         }
         int allItemHeight = 0;
-        for (int i = 0; i < mListView.getChildCount() ; i++) {
+        for (int i = 0; i < mListView.getChildCount(); i++) {
             allItemHeight += mListView.getChildAt(i).getHeight();
         }
         return allItemHeight >= mListView.getHeight();

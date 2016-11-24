@@ -14,7 +14,7 @@ import jasonxiang.com.doItYourself.R;
 import jasonxiang.com.doItYourself.xj.common.utils.UIUtils;
 
 /**
- * Created by guomenglong on 16/8/4.
+ * Created by xiangjian on 16/8/4.
  */
 
 public class PullToRefreshLoadMoreView extends LinearLayout {
