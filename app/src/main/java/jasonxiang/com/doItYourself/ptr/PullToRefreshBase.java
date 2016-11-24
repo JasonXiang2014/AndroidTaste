@@ -9,18 +9,19 @@ import android.widget.ScrollView;
 
 import java.lang.reflect.Field;
 
+import in.srain.cube.views.ptr.PtrClassicDefaultHeader;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrHandler;
 
 
 /**
- * Created by Administrator on 2015/11/6.
+ * Created by xiangjian on 2015/11/6.
  */
 public class PullToRefreshBase<T extends View> extends PtrFrameLayout {
-    private PullToRefreshHeader mPtrClassicHeader;
-    private float sX = -1, sY = -1;
-    private boolean isDraging;
+    private PtrClassicDefaultHeader mPtrClassicHeader;
+    private float mLastX = -1, mLastY = -1;
+    private boolean isDragging;
     private OnRefreshListener<T> mListener;
     private Field horizontalMoveController;
 
@@ -40,22 +41,18 @@ public class PullToRefreshBase<T extends View> extends PtrFrameLayout {
     }
 
     private void initViews() {
-        setPreventForHorizontalVisible(this.getClass());
-        mPtrClassicHeader = new PullToRefreshHeader(getContext());
+        setPreventForHorizontal(this.getClass());
+        mPtrClassicHeader = new PtrClassicDefaultHeader(getContext());
         setHeaderView(mPtrClassicHeader);
         addPtrUIHandler(mPtrClassicHeader);
-        this.setEnabled(false);
-
         this.setPtrHandler(new PtrHandler() {
             @Override
             public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
-                //判断是否可以下拉刷新。一般默认设置就行
                 return PtrDefaultHandler.checkContentCanBePulledDown(frame, content, header);
             }
 
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
-                //具体刷新的操作的回调
                 if (mListener != null) {
                     mListener.onRefresh(PullToRefreshBase.this);
                 }
@@ -63,7 +60,7 @@ public class PullToRefreshBase<T extends View> extends PtrFrameLayout {
         });
     }
 
-    public PullToRefreshHeader getHeader() {
+    public PtrClassicDefaultHeader getHeader() {
         return mPtrClassicHeader;
     }
 
@@ -122,32 +119,32 @@ public class PullToRefreshBase<T extends View> extends PtrFrameLayout {
     public boolean dispatchTouchEvent(MotionEvent e) {
         switch (e.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                sX = e.getRawX();
-                sY = e.getRawY();
+                mLastX = e.getRawX();
+                mLastY = e.getRawY();
                 break;
             case MotionEvent.ACTION_MOVE:
                 //只处理一次拖动以及初始的时候isEnable = true的时候
-                if (!isDraging) {
+                if (!isDragging) {
                     checkCanDrag(e);
                 }
                 break;
             case MotionEvent.ACTION_CANCEL:
             case MotionEvent.ACTION_UP:
-                isDraging = false;
+                isDragging = false;
                 setHorizontalMoveDisable(false);
         }
         return super.dispatchTouchEvent(e);
     }
 
     private void checkCanDrag(MotionEvent ev) {
-        float distanceX = ev.getRawX() - sX;
-        float distanceY = ev.getRawY() - sY;
-        if (distanceY < 100) {
+        float deltaX = ev.getRawX() - mLastX;
+        float deltaY = ev.getRawY() - mLastY;
+        if (deltaY < 100) {
             setHorizontalMoveDisable(true);
             return;
         }
-        isDraging = true;
-        float angle = Math.abs(distanceY / distanceX);
+        isDragging = true;
+        float angle = Math.abs(deltaY / deltaX);
         angle = (float) Math.toDegrees(Math.atan(angle));
         if (angle < 30) {
             setHorizontalMoveDisable(true);
@@ -156,13 +153,13 @@ public class PullToRefreshBase<T extends View> extends PtrFrameLayout {
         }
     }
 
-    private void setPreventForHorizontalVisible(Class clazz) {
+    private void setPreventForHorizontal(Class clazz) {
         try {
             horizontalMoveController = clazz.getDeclaredField("mPreventForHorizontal");
             horizontalMoveController.setAccessible(true);
         } catch (NoSuchFieldException e) {
             if (clazz.getSuperclass() != null) {
-                setPreventForHorizontalVisible(clazz.getSuperclass());
+                setPreventForHorizontal(clazz.getSuperclass());
             }
         }
     }

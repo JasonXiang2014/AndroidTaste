@@ -1,6 +1,7 @@
 package jasonxiang.com.doItYourself.xj.ui.main;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.OnClick;
 import jasonxiang.com.doItYourself.R;
+import jasonxiang.com.doItYourself.ptr.PullToRefreshBase;
 import jasonxiang.com.doItYourself.xj.base.BaseActivity;
 import jasonxiang.com.doItYourself.xj.base.BaseFragment;
 import jasonxiang.com.doItYourself.xj.common.widget.IndicatorView;
@@ -32,6 +34,8 @@ public class MainActivity extends BaseActivity {
     View vLine;
     @BindView(R.id.indicatorview)
     IndicatorView indicatorview;
+    @BindView(R.id.ptrContainer)
+    PullToRefreshBase ptrFrame;
 
     @Override
     protected int getContentViewId() {
@@ -60,6 +64,26 @@ public class MainActivity extends BaseActivity {
         indicatorview.setViewPager(mViewPager);
         PageChangeListener pageChangeListener = new PageChangeListener();
         indicatorview.setOnPageChangeListener(pageChangeListener);
+
+        ptrFrame.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener() {
+            @Override
+            public void onRefresh(PullToRefreshBase refreshView) {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        ptrFrame.onRefreshComplete();
+                    }
+                }, 2000);
+            }
+        });
+        ptrFrame.setEnabledNextPtrAtOnce(false);
+        ptrFrame.setLastUpdateTimeRelateObject(this);
+        ptrFrame.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ptrFrame.autoRefresh(true);
+            }
+        }, 150);
     }
 
     @OnClick({R.id.fade_anim_left, R.id.fade_anim_middle, R.id.fade_anim_right})
