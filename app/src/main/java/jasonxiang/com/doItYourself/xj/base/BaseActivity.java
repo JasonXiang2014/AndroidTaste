@@ -38,6 +38,26 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressWarnings("unchecked")
+    public <F extends BaseFragment> F findFragment(int id) {
+        return (F) getSupportFragmentManager().findFragmentById(id);
+    }
+
+    @SuppressWarnings("unchecked")
+    public <F extends BaseFragment> F findFragment(String tag) {
+        return (F) getSupportFragmentManager().findFragmentByTag(tag);
+    }
+
+    @SuppressWarnings("unchecked")
+    protected <V extends View> V findView(int id) {
+        return (V) findViewById(id);
+    }
+
+    @SuppressWarnings("unchecked")
+    protected <V extends View> V findView(View parent, int id) {
+        return (V) parent.findViewById(id);
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

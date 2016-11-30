@@ -1,8 +1,7 @@
-package jasonxiang.com.doItYourself.xj.ui.main;
+package jasonxiang.com.doItYourself.xj.ui.stickerheader;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,85 +13,38 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import jasonxiang.com.doItYourself.R;
-import jasonxiang.com.doItYourself.ptr.OnLoadMoreListener;
-import jasonxiang.com.doItYourself.ptr.PullToRefreshBase;
-import jasonxiang.com.doItYourself.ptr.PullToRefreshListView;
 import jasonxiang.com.doItYourself.xj.base.BaseFragment;
+import jasonxiang.com.doItYourself.xj.ui.main.Page2Fragment;
 
 /**
- * Created by xiangjain on 2016/11/10.
+ * Created by Administrator on 2016/11/30.
  */
 
-public class Page2Fragment extends BaseFragment {
+public class TestListFragment extends BaseFragment {
 
-    @BindView(R.id.ptrLv)
-    PullToRefreshListView ptrLv;
-    private MyAdapter myAdapter;
+    @BindView(R.id.listview)
+    ListView listView;
     private ArrayList<String> list = new ArrayList<>();
-    private static final int PAGE_COUNT = 10;
+
+    private MyAdapter myAdapter;
 
     @Override
     protected int getContentViewId() {
-        return R.layout.fragment_page_2;
+        return R.layout.fragment_listview;
     }
 
     @Override
     protected void init(Bundle savedInstanceState) {
-        init();
-        ptrLv.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener() {
-            @Override
-            public void onRefresh(PullToRefreshBase refreshView) {
-                refreshRequest();
-                ptrLv.onRefreshComplete();
-            }
-        });
-        ptrLv.showLoadMoreLoading();
-        ptrLv.setTotalAmount(50);
-        ptrLv.setOnLoadMoreListener(new OnLoadMoreListener() {
-            @Override
-            public void onLoadMore() {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        addList();
-                        ptrLv.onLoadMoreComplete(myAdapter.getCount() > 50 ? true : false);
-                    }
-                }, 2000);
-            }
-        });
-        myAdapter = new MyAdapter(getContext(), list);
-        ptrLv.setAdapter(myAdapter);
-    }
 
-    private void refreshRequest() {
-        list.clear();
-        init();
-        notifyDataSetChanged();
-    }
-
-    private void init() {
-        for (int i = 0; i < PAGE_COUNT; i++) {
+        for (int i = 0; i < 10; i++) {
             list.add("POSITION = " + i);
         }
-        notifyDataSetChanged();
-    }
-
-    private void addList() {
-        for (int i = 0; i < PAGE_COUNT; i++) {
-            list.add("New POSITION = " + i);
-        }
-        notifyDataSetChanged();
-    }
-
-    private void notifyDataSetChanged() {
-        if (myAdapter == null) {
-            return;
-        }
-        myAdapter.notifyDataSetChanged();
+        myAdapter = new MyAdapter(getContext(), list);
+        listView.setAdapter(myAdapter);
     }
 
     public ListView getListView() {
-        return ptrLv.getRefreshableView();
+        return listView;
     }
 
     private class MyAdapter extends BaseAdapter {
@@ -138,6 +90,5 @@ public class Page2Fragment extends BaseFragment {
             public TextView title;
         }
     }
-
 
 }

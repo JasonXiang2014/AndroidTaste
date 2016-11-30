@@ -8,6 +8,7 @@ import butterknife.OnClick;
 import jasonxiang.com.doItYourself.R;
 import jasonxiang.com.doItYourself.xj.base.BaseFragment;
 import jasonxiang.com.doItYourself.xj.common.widget.WebViewActivity;
+import jasonxiang.com.doItYourself.xj.ui.stickerheader.StickerHeaderAct;
 import jasonxiang.com.doItYourself.xj.ui.fab.FloatingActionButtonAct;
 import jasonxiang.com.doItYourself.xj.ui.navigationdrawer.NavigationDrawerAct;
 import jasonxiang.com.doItYourself.xj.ui.recycler.PinterestMasonryAct;
@@ -32,7 +33,7 @@ public class Page1Fragment extends BaseFragment {
     }
 
     @OnClick({R.id.recyclerButton, R.id.fab, R.id.tabLayout, R.id.navigation_drawer,
-            R.id.Masonry, R.id.toolbar, R.id.webview})
+            R.id.Masonry, R.id.toolbar, R.id.webview, R.id.stickerHeader})
     void onClick(View view) {
         Intent intent = null;
         switch (view.getId()) {
@@ -56,6 +57,9 @@ public class Page1Fragment extends BaseFragment {
                 break;
             case R.id.webview:
                 WebViewActivity.openLink(getActivity(), "http://www.baidu.com", "WebView Title");
+                break;
+            case R.id.stickerHeader:
+                intent = new Intent(getActivity(), StickerHeaderAct.class);
                 break;
             default:
                 break;

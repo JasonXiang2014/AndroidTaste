@@ -89,4 +89,52 @@
         <item name="android:maxHeight">15dp</item>
     </style>
 
+
+    <style name="DR" parent="AppTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="DR.TabLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <!-- Tab -->
+
+    <style name="DR.Tab">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:button">@null</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/dr_tab</item>
+    </style>
+
+
+    <style name="DR.TabHost">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:showDividers">middle</item>
+        <item name="android:divider">@drawable/dr_divider_v_drg</item>
+        <item name="android:dividerHeight">1dp</item>
+        <item name="android:background">@drawable/dr_tab_host</item>
+        <item name="android:padding">1dp</item>
+    </style>
+
+    <style name="DR.Tab.Left">
+        <item name="android:background">@drawable/dr_tab_left</item>
+    </style>
+
+    <style name="DR.Tab.Mid">
+        <item name="android:background">@drawable/dr_tab_mid</item>
+    </style>
+
+    <style name="DR.Tab.Right">
+        <item name="android:background">@drawable/dr_tab_right</item>
+    </style>
+
 </resources>
