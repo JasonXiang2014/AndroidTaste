@@ -8,6 +8,7 @@ import butterknife.OnClick;
 import jasonxiang.com.doItYourself.R;
 import jasonxiang.com.doItYourself.xj.base.BaseFragment;
 import jasonxiang.com.doItYourself.xj.common.widget.WebViewActivity;
+import jasonxiang.com.doItYourself.xj.ui.DemoActivity;
 import jasonxiang.com.doItYourself.xj.ui.stickerheader.StickerHeaderAct;
 import jasonxiang.com.doItYourself.xj.ui.fab.FloatingActionButtonAct;
 import jasonxiang.com.doItYourself.xj.ui.navigationdrawer.NavigationDrawerAct;
@@ -33,7 +34,7 @@ public class Page1Fragment extends BaseFragment {
     }
 
     @OnClick({R.id.recyclerButton, R.id.fab, R.id.tabLayout, R.id.navigation_drawer,
-            R.id.Masonry, R.id.toolbar, R.id.webview, R.id.stickerHeader})
+            R.id.Masonry, R.id.toolbar, R.id.webview, R.id.stickerHeader,R.id.HorizontalScrollViewEx})
     void onClick(View view) {
         Intent intent = null;
         switch (view.getId()) {
@@ -60,6 +61,9 @@ public class Page1Fragment extends BaseFragment {
                 break;
             case R.id.stickerHeader:
                 intent = new Intent(getActivity(), StickerHeaderAct.class);
+                break;
+            case R.id.HorizontalScrollViewEx:
+                intent = new Intent(getActivity(), DemoActivity.class);
                 break;
             default:
                 break;
