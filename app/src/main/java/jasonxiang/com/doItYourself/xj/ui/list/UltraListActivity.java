@@ -8,6 +8,7 @@ import java.util.List;
 
 import in.srain.cube.views.ptr.PtrFrameLayout;
 import jasonxiang.com.doItYourself.R;
+import jasonxiang.com.doItYourself.ptr.CustomUltraRefreshHeader;
 import jasonxiang.com.doItYourself.ptr.UltraRefreshListView;
 import jasonxiang.com.doItYourself.ptr.UltraRefreshListener;
 import jasonxiang.com.doItYourself.xj.base.BaseActivity;
@@ -33,10 +34,22 @@ public class UltraListActivity extends BaseActivity implements UltraRefreshListe
         return R.layout.activity_utral_list;
     }
 
+    /**
+     * PtrUIHandler 是用来控制整个下拉过程头部的回调
+     * <p>
+     * PtrHandler 是用来检查能否下拉刷新和监听下拉刷新刚开始时的回调
+     */
     @Override
     protected void init(Bundle savedInstanceState) {
         initData();
         mPtrFrame = ((PtrFrameLayout) findViewById(R.id.ultra_ptr));
+
+        //创建我们的自定义头部视图
+        CustomUltraRefreshHeader header = new CustomUltraRefreshHeader(this);
+        mPtrFrame.setHeaderView(header);
+        //设置视图修改的回调，因为我们的CustomUltraRefreshHeader实现了PtrUIHandler
+        mPtrFrame.addPtrUIHandler(header);
+
         ultraRefreshListView = ((UltraRefreshListView) findViewById(R.id.ultra_lv));
         //设置数据刷新的回调，因为UltraRefreshListView实现了PtrHandler
         mPtrFrame.setPtrHandler(ultraRefreshListView);

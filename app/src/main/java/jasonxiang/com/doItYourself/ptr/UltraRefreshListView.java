@@ -17,6 +17,8 @@ import jasonxiang.com.doItYourself.R;
  * Created by JasonXiang on 2016/12/21.
  */
 
+//refer http://blog.csdn.net/lisdye2/article/details/51449716
+
 public class UltraRefreshListView extends ListView implements PtrHandler, AbsListView.OnScrollListener {
 
     private UltraRefreshListener mUltraRefreshListener;
