@@ -37,6 +37,7 @@
         <activity android:name=".xj.ui.stickerheader.StickerHeaderAct"/>
         <activity android:name=".xj.ui.DemoActivity"/>
         <activity android:name=".xj.ui.list.UltraListActivity"/>
+        <activity android:name=".mvp.bean.UserLoginActivity"/>
     </application>
 
 

@@ -6,6 +6,7 @@ import android.view.View;
 
 import butterknife.OnClick;
 import jasonxiang.com.doItYourself.R;
+import jasonxiang.com.doItYourself.mvp.bean.UserLoginActivity;
 import jasonxiang.com.doItYourself.xj.base.BaseFragment;
 import jasonxiang.com.doItYourself.xj.common.widget.WebViewActivity;
 import jasonxiang.com.doItYourself.xj.ui.DemoActivity;
@@ -36,7 +37,7 @@ public class Page1Fragment extends BaseFragment {
 
     @OnClick({R.id.recyclerButton, R.id.fab, R.id.tabLayout, R.id.navigation_drawer,
             R.id.Masonry, R.id.toolbar, R.id.webview, R.id.stickerHeader, R.id.HorizontalScrollViewEx,
-            R.id.PullAndLoadListView})
+            R.id.PullAndLoadListView, R.id.MVP})
     void onClick(View view) {
         Intent intent = null;
         switch (view.getId()) {
@@ -69,6 +70,9 @@ public class Page1Fragment extends BaseFragment {
                 break;
             case R.id.PullAndLoadListView:
                 intent = new Intent(getActivity(), UltraListActivity.class);
+                break;
+            case R.id.MVP:
+                intent = new Intent(getActivity(), UserLoginActivity.class);
                 break;
             default:
                 break;
