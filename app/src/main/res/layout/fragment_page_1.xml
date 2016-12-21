@@ -64,5 +64,11 @@
             android:layout_height="wrap_content"
             android:text="HorizontalScrollViewEx" />
 
+        <Button
+            android:id="@+id/PullAndLoadListView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PullAndLoadListView" />
+
     </LinearLayout>
 </ScrollView>
