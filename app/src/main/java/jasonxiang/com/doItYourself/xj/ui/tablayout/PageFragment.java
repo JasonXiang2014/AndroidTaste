@@ -1,6 +1,8 @@
 package jasonxiang.com.doItYourself.xj.ui.tablayout;
 
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.View;
 import android.widget.TextView;
 
 import jasonxiang.com.doItYourself.R;
@@ -23,8 +25,17 @@ public class PageFragment extends BaseFragment {
 
     @Override
     protected void init(Bundle savedInstanceState) {
-        TextView textView = (TextView) getRoot();
+        View root = getRoot();
+        TextView textView = (TextView) root.findViewById(R.id.tv);
         textView.setText("Fragment #" + mPage);
+        TestViewGroup container = (TestViewGroup) root.findViewById(R.id.container);
+        TextView errorView = new TextView(getContext());
+        errorView.setClickable(true);
+        errorView.setTextColor(0xffff6600);
+        errorView.setGravity(Gravity.CENTER);
+        errorView.setTextSize(20);
+        errorView.setText("Just for test");
+        container.setHeader(errorView);
     }
 
     public static PageFragment newInstance(int page) {

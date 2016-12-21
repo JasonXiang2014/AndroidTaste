@@ -36,9 +36,8 @@ public class Page2Fragment extends BaseFragment {
         return R.layout.fragment_page_2;
     }
 
-    @Override
     protected void init(Bundle savedInstanceState) {
-        init();
+        initData();
         ptrLv.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener() {
             @Override
             public void onRefresh(PullToRefreshBase refreshView) {
@@ -66,11 +65,11 @@ public class Page2Fragment extends BaseFragment {
 
     private void refreshRequest() {
         list.clear();
-        init();
+        initData();
         notifyDataSetChanged();
     }
 
-    private void init() {
+    private void initData() {
         for (int i = 0; i < PAGE_COUNT; i++) {
             list.add("POSITION = " + i);
         }
