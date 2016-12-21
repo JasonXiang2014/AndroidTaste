@@ -12,4 +12,12 @@
         android:layout_gravity="center_horizontal"
         android:gravity="center" />
 
+    <Button
+        android:id="@+id/btnUseLayout"
+        android:text="Can change UI Position only use layout()?"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center" />
+
 </jasonxiang.com.doItYourself.xj.ui.tablayout.TestViewGroup>

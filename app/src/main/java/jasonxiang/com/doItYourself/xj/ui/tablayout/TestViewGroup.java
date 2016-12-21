@@ -1,12 +1,14 @@
 package jasonxiang.com.doItYourself.xj.ui.tablayout;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 /**
  * Created by JasonXiang on 2016/12/21.
@@ -41,5 +43,23 @@ public class TestViewGroup extends LinearLayout {
             header.setLayoutParams(lp);
         }
         addView(header, 0);
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        Toast.makeText(getContext(), "onMeasure", Toast.LENGTH_LONG).show();
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        Toast.makeText(getContext(), "onLayout", Toast.LENGTH_LONG).show();
+        super.onLayout(changed, l, t, r, b);
+    }
+
+    @Override
+    protected void dispatchDraw(Canvas canvas) {
+        Toast.makeText(getContext(), "dispatchDraw", Toast.LENGTH_LONG).show();
+        super.dispatchDraw(canvas);
     }
 }
