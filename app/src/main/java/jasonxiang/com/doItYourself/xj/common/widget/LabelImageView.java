@@ -28,6 +28,8 @@ import jasonxiang.com.doItYourself.R;
  */
 public class LabelImageView extends ImageView {
 
+    public static final String TAG = LabelImageView.class.getSimpleName();
+
     private static final Bitmap.Config BITMAP_CONFIG = Bitmap.Config.ARGB_8888;
     private static final int COLOR_DRAWABLE_DIMENSION = 2;
 
@@ -62,6 +64,9 @@ public class LabelImageView extends ImageView {
      */
     private Paint imgPaint;
 
+    /**
+     * 右上角圆圈
+     */
     private Paint roundPaint;
 
     private Paint rectPaint;
@@ -70,6 +75,8 @@ public class LabelImageView extends ImageView {
 
     private Paint txtPaint;
 
+    private Paint pointPaint;
+
     /**
      * 绘制
      */
@@ -77,10 +84,12 @@ public class LabelImageView extends ImageView {
 
     public LabelImageView(Context context) {
         this(context, null);
+        init();
     }
 
     public LabelImageView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
+        init();
     }
 
 
@@ -93,37 +102,36 @@ public class LabelImageView extends ImageView {
      */
     public LabelImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs,
                 R.styleable.LabelImageView, defStyle, 0);
-
-        int n = a.getIndexCount();
-        for (int i = 0; i < n; i++) {
-            int attr = a.getIndex(i);
-            switch (attr) {
-                case R.styleable.LabelImageView_label_src:
-                    mSrc = BitmapFactory.decodeResource(getResources(), a.getResourceId(attr, 0));
-                    break;
-                case R.styleable.LabelImageView_label_textsize:
-                    mTextSize = a.getDimensionPixelSize(attr, (int) TypedValue.applyDimension(
-                            TypedValue.COMPLEX_UNIT_DIP, 10f, getResources().getDisplayMetrics()));// 默认为10DP
-                    break;
-                case R.styleable.LabelImageView_label_text:
-                    mText = a.getText(attr).toString();
-                    break;
-            }
-        }
+        mSrc = BitmapFactory.decodeResource(getResources(), a.getResourceId(R.styleable.LabelImageView_label_src, R.drawable.pet));
+        mTextSize = a.getDimensionPixelSize(R.styleable.LabelImageView_label_textsize, (int) TypedValue.applyDimension(
+                            TypedValue.COMPLEX_UNIT_DIP, 200f, getResources().getDisplayMetrics()));// 默认为10DP
+        mText = a.getText(R.styleable.LabelImageView_label_text).toString();
         a.recycle();
 
         init();
     }
 
     private void init() {
+//        if(Build.VERSION.SDK_INT >= 11){
+//            setLayerType(LAYER_TYPE_SOFTWARE, null);
+//        }
         imgPaint = new Paint();
+        imgPaint.setAntiAlias(true);
+
         roundPaint = new Paint();
+        roundPaint.setAntiAlias(true);
+        roundPaint.setStyle(Paint.Style.FILL);
+        roundPaint.setColor(Color.RED);
+
         arcPaint = new Paint();
         rectPaint = new Paint();
         txtPaint = new Paint();
+
+        pointPaint = new Paint();
+        pointPaint.setColor(Color.BLACK);
+        pointPaint.setStrokeWidth(10.0f);
     }
 
     /**
@@ -175,7 +183,7 @@ public class LabelImageView extends ImageView {
         min = Math.min(mWidth, mHeight);
 
         setMeasuredDimension(mWidth, mHeight);
-        Log.e("test", "mWidth = " + mWidth + "mHeight = " + mHeight);
+        Log.e(TAG, "mWidth = " + mWidth + "mHeight = " + mHeight);
     }
 
     /**
@@ -187,12 +195,17 @@ public class LabelImageView extends ImageView {
     protected void onDraw(Canvas canvas) {
         //设置画布整体背景色
         canvas.drawARGB(255, 255, 255, 255);
-//        canvas.drawBitmap(createCircleImage(mSrc, min), INNER_PADDING, INNER_PADDING, null);
+        //canvas.drawBitmap(createCircleImage(mSrc, min), INNER_PADDING, INNER_PADDING, null);
         drawCircleImageDirectly(canvas);
-        drawCircle(canvas, min);
+        drawRightTopCircle(canvas, min);
         drawRect(canvas, min);
         drawArc(canvas, min);
         drawTextCenter(canvas);
+        drawCenterPoint(canvas);
+    }
+
+    private void drawCenterPoint(Canvas canvas){
+        canvas.drawPoint(min / 2, min/ 2, pointPaint);
     }
 
     private void drawTextCenter(Canvas canvas) {
@@ -202,7 +215,10 @@ public class LabelImageView extends ImageView {
         canvas.save();
         canvas.translate(min / 2, min / 2);
         txtPaint.setTextSize(mTextSize);
-        canvas.drawText("居中文本", 0, 0, txtPaint);
+        Rect rect = new Rect();
+        String text = "居中文本";
+        txtPaint.getTextBounds(text, 0, text.length(), rect);
+        canvas.drawText(text, 0, rect.height() / 2, txtPaint);
         canvas.restore();
     }
 
@@ -212,7 +228,6 @@ public class LabelImageView extends ImageView {
      * @param canvas
      */
     private void drawCircleImageDirectly(Canvas canvas) {
-        imgPaint.setAntiAlias(true);
         int layerId = canvas.saveLayer(0, 0, min, min, imgPaint, Canvas.ALL_SAVE_FLAG);
         //内部圆直径
         int innerCircle = min - INNER_PADDING * 2;
@@ -239,11 +254,7 @@ public class LabelImageView extends ImageView {
      * @param canvas
      * @param center
      */
-    private void drawCircle(Canvas canvas, int center) {
-        roundPaint.setAntiAlias(true);
-        roundPaint.setStyle(Paint.Style.FILL);
-        roundPaint.setColor(Color.WHITE);
-
+    private void drawRightTopCircle(Canvas canvas, int center) {
         int innerCircleRadius = (center - INNER_PADDING * 2) / 2;
         double xCord = center / 2 + innerCircleRadius / Math.sqrt(2);
         double yCord = center / 2 - innerCircleRadius / Math.sqrt(2);
@@ -253,22 +264,20 @@ public class LabelImageView extends ImageView {
         // 画实心圆
         canvas.drawCircle((float) xCord, (float) yCord, radius, roundPaint);
 
-        // 空心圆
+        // 外部实线空心圆
         roundPaint.reset();
         roundPaint.setAntiAlias(true);
         roundPaint.setStyle(Paint.Style.STROKE);
         canvas.drawCircle((float) xCord, (float) yCord, radius, roundPaint);
 
         /**
-         * 获得绘制文本的宽和高
+         * 绘制右上角圆形内的文本描述
          */
         roundPaint.setTextSize(mTextSize);
         Rect mBound = new Rect();
         roundPaint.getTextBounds(mText, 0, mText.length(), mBound);
-
-        int textSize = mTextSize;
-        roundPaint.setTextSize(textSize);
-        canvas.drawText(mText, (int) (xCord - mBound.width() / 2), (int) (yCord + mBound.height() / 2), roundPaint);
+        canvas.drawText(mText, (int) (xCord - mBound.width() / 2),
+                (int) (yCord + mBound.height() / 2), roundPaint);
     }
 
     /**
@@ -297,7 +306,6 @@ public class LabelImageView extends ImageView {
      * @return
      */
     private Bitmap createCircleImage(Bitmap source, int center) {
-        imgPaint.setAntiAlias(true);
         //内部圆直径
         int innerCircle = center - INNER_PADDING * 2;
         //内部圆半径

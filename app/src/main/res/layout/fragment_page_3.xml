@@ -3,25 +3,29 @@
     xmlns:myapp="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <jasonxiang.com.doItYourself.xj.common.widget.MyView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:background="#ffff0000"
-        android:padding="20dp"></jasonxiang.com.doItYourself.xj.common.widget.MyView>
+        android:background="#ffff00ff"
+        android:padding="20dp"/>
 
     <jasonxiang.com.doItYourself.xj.common.widget.LabelImageView
         android:layout_width="160dp"
         android:layout_height="160dp"
-        myapp:label_src="@drawable/ic_launcher"
+        myapp:label_src="@drawable/pet"
         myapp:label_text="Hello,World"
         myapp:label_textsize="12sp" />
 
+    <jasonxiang.com.doItYourself.xj.common.widget.AutoReJustSizeTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:text="测试用例测试用例测试用例测试用例测试用例测试用例测试用例！！！！END" />
     <jasonxiang.com.doItYourself.xj.common.widget.ScrollerView
         android:id="@+id/scrollerView"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
