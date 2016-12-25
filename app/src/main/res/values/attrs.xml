@@ -6,10 +6,15 @@
         <attr name="label_textsize" format="dimension" />
         <attr name="label_text" format="string" />
     </declare-styleable>
+
     <declare-styleable name="IndicatorView">
         <attr name="indicator_icon" format="reference" />
         <attr name="indicator_margin" format="dimension" />
         <attr name="indicator_smooth" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="ViewPagerIndicator">
+        <attr name="item_count" format="integer" />
     </declare-styleable>
 
 </resources>
