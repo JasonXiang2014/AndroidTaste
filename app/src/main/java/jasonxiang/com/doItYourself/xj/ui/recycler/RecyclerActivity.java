@@ -17,9 +17,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jasonxiang.com.doItYourself.R;
+import jasonxiang.com.doItYourself.xj.model.Book;
 import jasonxiang.com.doItYourself.xj.common.recycler.DividerGridItemDecoration;
 import jasonxiang.com.doItYourself.xj.common.recycler.HomeAdapter;
 import jasonxiang.com.doItYourself.xj.common.recycler.StaggeredHomeAdapter;
+import jasonxiang.com.doItYourself.xj.model.User;
+import jasonxiang.com.doItYourself.xj.ui.main.Page1Fragment;
 
 public class RecyclerActivity extends AppCompatActivity {
 
@@ -48,6 +51,9 @@ public class RecyclerActivity extends AppCompatActivity {
 
         initEvent();
 
+        Intent intent = getIntent();
+        User user = intent.getParcelableExtra(Page1Fragment.EXTRA_USER);
+        Toast.makeText(this, user.toString(), Toast.LENGTH_SHORT).show();
     }
 
     private void initEvent() {
