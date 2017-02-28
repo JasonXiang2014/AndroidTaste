@@ -3,6 +3,7 @@
     package="jasonxiang.com.doItYourself">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name=".xj.app.XJApplication"
         android:allowBackup="true"
@@ -39,6 +40,7 @@
         <activity android:name=".xj.ui.list.UltraListActivity"/>
         <activity android:name=".mvp.bean.UserLoginActivity"/>
         <activity android:name=".xj.ui.graph.GraphActivity"/>
+        <activity android:name=".xj.ui.okhttp.OkhttpActivity"/>
     </application>
 
 
