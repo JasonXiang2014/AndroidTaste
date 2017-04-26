@@ -3,7 +3,7 @@ package jasonxiang.com.doItYourself.mvp.presenter;
 import android.os.Handler;
 
 import jasonxiang.com.doItYourself.mvp.bean.User;
-import jasonxiang.com.doItYourself.mvp.biz.OnLoginListener;
+import jasonxiang.com.doItYourself.mvp.biz.onLoginListener;
 import jasonxiang.com.doItYourself.mvp.biz.UserBiz;
 import jasonxiang.com.doItYourself.mvp.view.IUserLoginView;
 
@@ -24,7 +24,7 @@ public class UserLoginPresenter {
 
     public void login() {
         iUserLoginView.showLoading();
-        userBiz.login(iUserLoginView.getUserName(), iUserLoginView.getPassword(), new OnLoginListener() {
+        userBiz.login(iUserLoginView.getUserName(), iUserLoginView.getPassword(), new onLoginListener() {
 
             @Override
             public void logSuccess(final User user) {

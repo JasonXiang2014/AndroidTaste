@@ -6,5 +6,5 @@ package jasonxiang.com.doItYourself.mvp.biz;
 
 public interface IUserBiz {
 
-    public void login(String userName, String passWord, OnLoginListener loginListener);
+    public void login(String userName, String passWord, onLoginListener loginListener);
 }

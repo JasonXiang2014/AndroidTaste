@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jasonxiang.com.doItYourself.R;
-import jasonxiang.com.doItYourself.xj.model.Book;
 import jasonxiang.com.doItYourself.xj.common.recycler.DividerGridItemDecoration;
 import jasonxiang.com.doItYourself.xj.common.recycler.HomeAdapter;
 import jasonxiang.com.doItYourself.xj.common.recycler.StaggeredHomeAdapter;
@@ -41,8 +40,9 @@ public class RecyclerActivity extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.id_recyclerview);
         mAdapter = new HomeAdapter(this, mDatas);
 
-        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(4,
-                StaggeredGridLayoutManager.VERTICAL));
+/*        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(4,
+                StaggeredGridLayoutManager.VERTICAL));*/
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mAdapter);
 
         mRecyclerView.addItemDecoration(new DividerGridItemDecoration(this));

@@ -7,19 +7,19 @@ import android.view.View;
 import butterknife.OnClick;
 import jasonxiang.com.doItYourself.R;
 import jasonxiang.com.doItYourself.mvp.bean.UserLoginActivity;
-import jasonxiang.com.doItYourself.xj.model.Book;
 import jasonxiang.com.doItYourself.xj.base.BaseFragment;
 import jasonxiang.com.doItYourself.xj.common.widget.WebViewActivity;
+import jasonxiang.com.doItYourself.xj.model.Book;
 import jasonxiang.com.doItYourself.xj.model.User;
 import jasonxiang.com.doItYourself.xj.ui.DemoActivity;
+import jasonxiang.com.doItYourself.xj.ui.fab.FloatingActionButtonAct;
 import jasonxiang.com.doItYourself.xj.ui.graph.GraphActivity;
 import jasonxiang.com.doItYourself.xj.ui.list.UltraListActivity;
-import jasonxiang.com.doItYourself.xj.ui.okhttp.OkhttpActivity;
-import jasonxiang.com.doItYourself.xj.ui.stickerheader.StickerHeaderAct;
-import jasonxiang.com.doItYourself.xj.ui.fab.FloatingActionButtonAct;
 import jasonxiang.com.doItYourself.xj.ui.navigationdrawer.NavigationDrawerAct;
+import jasonxiang.com.doItYourself.xj.ui.okhttp.OkhttpActivity;
 import jasonxiang.com.doItYourself.xj.ui.recycler.PinterestMasonryAct;
 import jasonxiang.com.doItYourself.xj.ui.recycler.RecyclerActivity;
+import jasonxiang.com.doItYourself.xj.ui.stickerheader.StickerHeaderAct;
 import jasonxiang.com.doItYourself.xj.ui.tablayout.TabLayoutAct;
 import jasonxiang.com.doItYourself.xj.ui.toolbar.ToolbarAct;
 
@@ -43,14 +43,14 @@ public class Page1Fragment extends BaseFragment {
 
     @OnClick({R.id.recyclerButton, R.id.fab, R.id.tabLayout, R.id.navigation_drawer,
             R.id.Masonry, R.id.toolbar, R.id.webview, R.id.stickerHeader, R.id.HorizontalScrollViewEx,
-            R.id.PullAndLoadListView, R.id.MVP, R.id.graph,R.id.okhttp})
+            R.id.PullAndLoadListView, R.id.MVP, R.id.graph, R.id.okhttp})
     void onClick(View view) {
         Intent intent = null;
         switch (view.getId()) {
             case R.id.recyclerButton:
                 intent = new Intent(getActivity(), RecyclerActivity.class);
                 Book book = new Book("Hello Parcelable", 1, false);
-                User user  = new User(10150063, "XiangJian", true, book);
+                User user = new User(10150063, "XiangJian", true, book);
                 intent.putExtra(EXTRA_USER, user);
                 break;
             case R.id.fab:

@@ -9,7 +9,7 @@ import jasonxiang.com.doItYourself.mvp.bean.User;
 public class UserBiz implements IUserBiz {
 
     @Override
-    public void login(final String userName, final String passWord, final OnLoginListener loginListener) {
+    public void login(final String userName, final String passWord, final onLoginListener loginListener) {
         new Thread() {
             @Override
             public void run() {
