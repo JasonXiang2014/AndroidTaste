@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="jasonxiang.com.doItYourself">
+    package="jasonxiang.com.doityourself">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
-        android:name=".xj.app.XJApplication"
+        android:name="jasonxiang.com.doityourself.xj.app.XJApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".xj.ui.main.MainActivity">
+        <activity android:name="jasonxiang.com.doityourself.xj.ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,23 +23,23 @@
             android:value="xj.com" />
 
         <activity
-            android:name=".xj.ui.recycler.RecyclerActivity"
+            android:name="jasonxiang.com.doityourself.xj.ui.recycler.RecyclerActivity"
             android:theme="@style/ActionBarTheme" />
-        <activity android:name=".xj.ui.recycler.StaggeredGridLayoutActivity" />
-        <activity android:name=".xj.ui.fab.FloatingActionButtonAct" />
-        <activity android:name=".xj.ui.tablayout.TabLayoutAct" />
-        <activity android:name=".xj.ui.navigationdrawer.NavigationDrawerAct" />
-        <activity android:name=".xj.ui.recycler.PinterestMasonryAct" />
-        <activity android:name=".xj.ui.toolbar.ToolbarAct" />
-        <activity android:name=".xj.ui.navigationdrawer.CheeseDetailActivity" />
-        <activity android:name=".xj.common.widget.WebViewActivity" />
-        <activity android:name=".xj.common.widget.webview.JavaCallJsAct"/>
-        <activity android:name=".xj.ui.stickerheader.StickerHeaderAct"/>
-        <activity android:name=".xj.ui.DemoActivity"/>
-        <activity android:name=".xj.ui.list.UltraListActivity"/>
-        <activity android:name=".mvp.bean.UserLoginActivity"/>
-        <activity android:name=".xj.ui.graph.GraphActivity"/>
-        <activity android:name=".xj.ui.okhttp.OkhttpActivity"/>
+        <activity android:name="jasonxiang.com.doityourself.xj.ui.recycler.StaggeredGridLayoutActivity" />
+        <activity android:name="jasonxiang.com.doityourself.xj.ui.fab.FloatingActionButtonAct" />
+        <activity android:name="jasonxiang.com.doityourself.xj.ui.tablayout.TabLayoutAct" />
+        <activity android:name="jasonxiang.com.doityourself.xj.ui.navigationdrawer.NavigationDrawerAct" />
+        <activity android:name="jasonxiang.com.doityourself.xj.ui.recycler.PinterestMasonryAct" />
+        <activity android:name="jasonxiang.com.doityourself.xj.ui.toolbar.ToolbarAct" />
+        <activity android:name="jasonxiang.com.doityourself.xj.ui.navigationdrawer.CheeseDetailActivity" />
+        <activity android:name="jasonxiang.com.doityourself.xj.common.widget.WebViewActivity" />
+        <activity android:name="jasonxiang.com.doityourself.xj.common.widget.webview.JavaCallJsAct"/>
+        <activity android:name="jasonxiang.com.doityourself.xj.ui.stickerheader.StickerHeaderAct"/>
+        <activity android:name="jasonxiang.com.doityourself.xj.ui.DemoActivity"/>
+        <activity android:name="jasonxiang.com.doityourself.xj.ui.list.UltraListActivity"/>
+        <activity android:name="jasonxiang.com.doityourself.mvp.bean.UserLoginActivity"/>
+        <activity android:name="jasonxiang.com.doityourself.xj.ui.graph.GraphActivity"/>
+        <activity android:name="jasonxiang.com.doityourself.xj.ui.okhttp.OkhttpActivity"/>
     </application>
 
 

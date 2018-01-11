@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<jasonxiang.com.doItYourself.xj.ui.tablayout.TestViewGroup xmlns:android="http://schemas.android.com/apk/res/android"
+<jasonxiang.com.doityourself.xj.ui.tablayout.TestViewGroup xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/container"
@@ -20,4 +20,4 @@
         android:layout_gravity="center_horizontal"
         android:gravity="center" />
 
-</jasonxiang.com.doItYourself.xj.ui.tablayout.TestViewGroup>
+</jasonxiang.com.doityourself.xj.ui.tablayout.TestViewGroup>

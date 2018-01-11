@@ -5,25 +5,25 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <jasonxiang.com.doItYourself.xj.common.widget.MyView
+    <jasonxiang.com.doityourself.xj.common.widget.MyView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#ffff00ff"
         android:padding="20dp"/>
 
-    <jasonxiang.com.doItYourself.xj.common.widget.LabelImageView
+    <jasonxiang.com.doityourself.xj.common.widget.LabelImageView
         android:layout_width="160dp"
         android:layout_height="160dp"
         myapp:label_src="@drawable/pet"
         myapp:label_text="Hello,World"
         myapp:label_textsize="12sp" />
 
-    <jasonxiang.com.doItYourself.xj.common.widget.AutoReJustSizeTextView
+    <jasonxiang.com.doityourself.xj.common.widget.AutoReJustSizeTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
         android:text="测试用例测试用例测试用例测试用例测试用例测试用例测试用例！！！！END" />
-    <jasonxiang.com.doItYourself.xj.common.widget.ScrollerView
+    <jasonxiang.com.doityourself.xj.common.widget.ScrollerView
         android:id="@+id/scrollerView"
         android:visibility="gone"
         android:layout_width="match_parent"
@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="can you scroll?" />
-    </jasonxiang.com.doItYourself.xj.common.widget.ScrollerView>
+    </jasonxiang.com.doityourself.xj.common.widget.ScrollerView>
 
 
 </LinearLayout>

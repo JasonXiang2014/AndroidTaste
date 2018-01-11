@@ -1,4 +1,4 @@
-package jasonxiang.com.doItYourself.xj.model;
+package jasonxiang.com.doityourself.xj.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

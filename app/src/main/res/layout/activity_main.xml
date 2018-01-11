@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-<jasonxiang.com.doItYourself.xj.common.widget.ViewPagerIndicator
+<jasonxiang.com.doityourself.xj.common.widget.ViewPagerIndicator
     android:id="@+id/indicator"
     android:layout_width="match_parent"
     android:layout_height="45dp"

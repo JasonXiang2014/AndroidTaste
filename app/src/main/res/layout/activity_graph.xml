@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <jasonxiang.com.doItYourself.xj.common.widget.ArcView
+    <jasonxiang.com.doityourself.xj.common.widget.ArcView
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>
